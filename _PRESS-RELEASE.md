@@ -18,27 +18,40 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  To be decided™
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  A quick and casual game targeted towards to those who are really bored.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-
+   " Kill one bug, and you are a murderer. Kill millions of bugs, and you are a conqueror. Kill them all, and you are a god."
+   Drag and drop the bugs away from your server. Maintain and grow your user base. Become the ultimate admin.
+   
 ## Problem ##
   > Describe the problem your product solves.
+  Boredom
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  Fun
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+  "I used to not have fun but now I have fun and no responsibilities!"
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  Open game and press play. Place a tower and kill all the enemies before they rush your database.
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  By playing this game I learned how to protect myself from DDoS attacks. I also learned what DDos attacks are.
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+ theoretical link here
+  
+  
+  
