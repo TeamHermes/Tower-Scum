@@ -32,8 +32,11 @@ function create() {
   mainComp.width = ratio(142);
   mainComp.height = ratio(150);
 
-
-
+  var controlPanel = game.add.sprite(610, 431, 'maincomp', 'computer_control/computer_control_01.png');
+  controlPanel.animations.add('blink', ['computer_control/computer_control_01.png', 'computer_control/computer_control_02.png', 'computer_control/computer_control_03.png', 'computer_control/computer_control_04.png', 'computer_control/computer_control_05.png'], 10, true);
+  controlPanel.animations.play('blink');
+  controlPanel.width = ratio(72);
+  controlPanel.height = ratio(46);
 
 }
 
