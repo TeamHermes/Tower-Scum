@@ -8,16 +8,17 @@ var ratio = function(number){
 
 function preload() {
   game.load.atlas('maincomp','assets/maincomp/maincomp.png', 'assets/maincomp/maincomp.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+  game.load.atlas('viruses','assets/viruses/viruses.png', 'assets/viruses/viruses.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
   game.load.script('loadSprites.js', 'sprites/loadSprites.js');
   // game.load.image('computer','assets/computer.gif');
 }
 
 function create() {
   compSprite(); //takes x and y coordinates for positioning
-
 }
 
 
 function update() {
+
 }
 
