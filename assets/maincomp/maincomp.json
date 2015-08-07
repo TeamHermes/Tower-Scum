@@ -1,6 +1,6 @@
 {"frames": {
 
-"computer/computer_01.png":
+"computer_01.png":
 {
 	"frame": {"x":139,"y":2,"w":134,"h":141},
 	"rotated": false,
@@ -9,7 +9,7 @@
 	"sourceSize": {"w":142,"h":150},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"computer/computer_02.png":
+"computer_02.png":
 {
 	"frame": {"x":2,"y":2,"w":135,"h":141},
 	"rotated": false,
@@ -18,117 +18,117 @@
 	"sourceSize": {"w":137,"h":150},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"computer/computer_03.png":
+"computer_03.png":
 {
-	"frame": {"x":139,"y":2,"w":134,"h":141},
+	"frame": {"x":275,"y":2,"w":134,"h":141},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":9,"w":134,"h":141},
 	"sourceSize": {"w":136,"h":150},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"computer/computer_04.png":
+"computer_04.png":
 {
-	"frame": {"x":275,"y":2,"w":133,"h":141},
+	"frame": {"x":411,"y":2,"w":133,"h":141},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":9,"w":133,"h":141},
 	"sourceSize": {"w":135,"h":150},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"computer/computer_05.png":
+"computer_05.png":
 {
-	"frame": {"x":275,"y":2,"w":133,"h":141},
+	"frame": {"x":546,"y":2,"w":133,"h":141},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":9,"w":133,"h":141},
 	"sourceSize": {"w":133,"h":150},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"computer_control/computer_control_01.png":
+"control_center_01.png":
 {
-	"frame": {"x":75,"y":145,"w":70,"h":48},
+	"frame": {"x":755,"y":36,"w":70,"h":48},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":48},
 	"sourceSize": {"w":72,"h":48},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"computer_control/computer_control_02.png":
+"control_center_02.png":
 {
-	"frame": {"x":2,"y":145,"w":71,"h":48},
+	"frame": {"x":829,"y":2,"w":71,"h":48},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":71,"h":48},
 	"sourceSize": {"w":73,"h":48},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"computer_control/computer_control_03.png":
+"control_center_03.png":
 {
-	"frame": {"x":147,"y":145,"w":70,"h":48},
+	"frame": {"x":681,"y":70,"w":70,"h":48},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":48},
 	"sourceSize": {"w":72,"h":48},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"computer_control/computer_control_04.png":
+"control_center_04.png":
 {
-	"frame": {"x":219,"y":145,"w":69,"h":48},
+	"frame": {"x":826,"y":86,"w":69,"h":48},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":69,"h":48},
 	"sourceSize": {"w":71,"h":48},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"computer_control/computer_control_05.png":
+"control_center_05.png":
 {
-	"frame": {"x":290,"y":145,"w":69,"h":48},
+	"frame": {"x":897,"y":86,"w":69,"h":48},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":69,"h":48},
 	"sourceSize": {"w":69,"h":48},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"wheels/wheels_01.png":
+"wheels_01.png":
 {
-	"frame": {"x":2,"y":195,"w":72,"h":32},
+	"frame": {"x":681,"y":2,"w":72,"h":32},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":32},
 	"sourceSize": {"w":74,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"wheels/wheels_02.png":
+"wheels_02.png":
 {
-	"frame": {"x":76,"y":195,"w":72,"h":32},
+	"frame": {"x":755,"y":2,"w":72,"h":32},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":32},
 	"sourceSize": {"w":74,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"wheels/wheels_03.png":
+"wheels_03.png":
 {
-	"frame": {"x":2,"y":195,"w":72,"h":32},
+	"frame": {"x":681,"y":36,"w":72,"h":32},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":32},
 	"sourceSize": {"w":74,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"wheels/wheels_04.png":
+"wheels_04.png":
 {
-	"frame": {"x":150,"y":195,"w":72,"h":32},
+	"frame": {"x":827,"y":52,"w":72,"h":32},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":32},
 	"sourceSize": {"w":74,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"wheels/wheels_05.png":
+"wheels_05.png":
 {
-	"frame": {"x":224,"y":195,"w":71,"h":32},
+	"frame": {"x":753,"y":86,"w":71,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":71,"h":32},
@@ -140,8 +140,8 @@
 	"version": "1.0",
 	"image": "maincomp.png",
 	"format": "RGBA8888",
-	"size": {"w":410,"h":229},
+	"size": {"w":968,"h":145},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:c2caced90d97b95c1437e5fcd136f72c:e9a12d67232acf26e067c35bb36d1778:cc4e7d8ae3a67a425019f8813780904e$"
+	"smartupdate": "$TexturePacker:SmartUpdate:49b60f4063705435bc3e9d1d7883fa11:8d3f18b1d676143fa05c6e8251cc9161:cc4e7d8ae3a67a425019f8813780904e$"
 }
 }

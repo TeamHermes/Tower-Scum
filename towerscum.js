@@ -16,8 +16,8 @@ function create() {
   // computer.width = 250;
   // computer.height = 250;
 
-  var wheels = game.add.sprite( 700, 485, 'maincomp', 'wheels/wheels_01.png');
-  wheels.animations.add('spin', ['wheels/wheels_01.png','wheels/wheels_02.png','wheels/wheels_03.png','wheels/wheels_04.png','wheels/wheels_05.png'], 10, true);
+  var wheels = game.add.sprite( 700, 485, 'maincomp', 'wheels_01.png');
+  wheels.animations.add('spin', ['wheels_01.png','wheels_02.png','wheels_03.png','wheels_04.png','wheels_05.png'], 15, true);
   wheels.animations.play('spin');
   console.log(wheels.width);
   console.log(wheels.height);
@@ -25,18 +25,18 @@ function create() {
   wheels.height = ratio(32);
 
 
-  var mainComp = game.add.sprite( 610, 300, 'maincomp', 'computer/computer_01.png');
-  mainComp.animations.add('computer', ['computer/computer_01.png','computer/computer_02.png','computer/computer_03.png','computer/computer_04.png','computer/computer_05.png'], 10, true);
+  var mainComp = game.add.sprite( 610, 300, 'maincomp', 'computer_01.png');
+  mainComp.animations.add('computer', ['computer_01.png','computer_02.png','computer_03.png','computer_04.png','computer_05.png'], 15, true);
   mainComp.animations.play('computer');
   //original size: 142 x 150 - +50% size: 
   mainComp.width = ratio(142);
   mainComp.height = ratio(150);
 
-  var controlPanel = game.add.sprite(610, 431, 'maincomp', 'computer_control/computer_control_01.png');
-  controlPanel.animations.add('blink', ['computer_control/computer_control_01.png', 'computer_control/computer_control_02.png', 'computer_control/computer_control_03.png', 'computer_control/computer_control_04.png', 'computer_control/computer_control_05.png'], 10, true);
+  var controlPanel = game.add.sprite(610, 429, 'maincomp', 'control_center_04.png');
+  controlPanel.animations.add('blink', ['control_center_01.png', 'control_center_02.png', 'control_center_03.png', 'control_center_04.png', 'control_center_05.png'], 15, true);
   controlPanel.animations.play('blink');
   controlPanel.width = ratio(72);
-  controlPanel.height = ratio(46);
+  controlPanel.height = ratio(48);
 
 }
 
