@@ -9,6 +9,8 @@ var computerCollision = function(x,y){ //x and y coordinates for positioning
   	collisionLine.create(x+(3*i), y+(i*1.5), 'computerCollision');
   }
 
+  collisionLine.enableBody = true;
+  collisionLine.body.immovable = true;
 
 
 };
