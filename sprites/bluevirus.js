@@ -60,7 +60,8 @@ var blueVirus = function(x,y,number) {
     virus.animations.play('walk');
 
     var tween = game.add.tween(virus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
-
+    virus.enableBody = true;
+    virus.body.gravity.y = 100
 
 
   }
@@ -72,7 +73,7 @@ var blueVirus = function(x,y,number) {
   	addMovement(blueVirus);
   }
   
-
+  game.physics.arcade.enable(blueVirus);
 
   //var blueVirus = game.add.sprite(0+x, 480+y, 'viruses', "blue/walk/01.png");
 
