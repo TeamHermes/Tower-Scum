@@ -16,9 +16,13 @@ preload.prototype = {
     this.game.load.script('computer.js', 'sprites/computer.js');
     this.game.load.script('bluevirus.js', 'sprites/bluevirus.js');
     this.game.load.script('redvirus.js', 'sprites/redvirus.js');
-    this.game.load.script('computerCollision.js','sprites/computerCollision.js')
+    this.game.load.script('computerCollision.js','sprites/computerCollision.js');
+    this.game.load.script('createStage', 'sprites/createStage.js');
     this.game.load.image("background", "assets/bg.png");
-  	this.game.load.image("ground", "assets/ground_p.png");
+  	this.game.load.image("ground", "assets/ground.png");
+  	var blueViruses;
+  	var ground;
+  	var collisionLine;
   },
     create: function(){
     console.log('Preloading data...');
