@@ -1,4 +1,4 @@
-var redVirus = function(x,y){ //x and y coordinates for positioning
+var redVirus = function(x,y,number){ //x and y coordinates for positioning
   x = x || 0;
   y = x || 0;
 
@@ -23,13 +23,39 @@ var redVirus = function(x,y){ //x and y coordinates for positioning
                     'red/attack/04.png',
                     'red/attack/05.png'];
 
-  var redvirus = game.add.sprite(0+x, 480+y, 'viruses', 'red/walk/01.png');
-  redvirus.animations.add('walk', walkPNGs, 15, true);
-  redvirus.animations.add('attack', attackPNGs, 15, true);
-  redvirus.animations.add('die', diePNGs, 15, true);
+  var addMovement = function(virus){
+	game.physics.arcade.enable(virus);
+    virus.body.collideWorldBounds = true;
+    virus.inputEnabled = true;
+    virus.input.enableDrag(true);
 
-  game.add.tween(redvirus).to({x:game.width}, 10000, Phaser.Easing.Linear.None, true);
+    virus.events.onDragStart.add(startDrag, this);
+    virus.events.onDragStop.add(stopDrag, this);
 
-  redvirus.animations.play('walk');
+    virus.animations.add('walk', walkPNGs, 15, true);
+    virus.animations.add('airwalk', walkPNGs, 45, true);
+    virus.animations.play('walk');
+
+    var tween = game.add.tween(virus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+
+
+	  function startDrag(virus){
+	    virus.animations.play('airwalk');
+	    virus.body.moves = false;
+	    tween.pause();
+	  }
+
+	  function stopDrag(virus){
+	      virus.body.moves = true;
+	      virus.animations.play('walk');
+	      tween = game.add.tween(virus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+	  }
+  }
+
+  for(var i = 0; i < number; i++){
+  	var redViruses = game.add.group();
+  	var redVirus = redViruses.create(0+x, 480+y, 'viruses', "red/walk/01.png");
+  	addMovement(redVirus);
+  }
 
 };

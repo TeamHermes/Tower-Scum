@@ -20,7 +20,8 @@ function create() {
   platform();
   
   compSprite(); //takes x and y coordinates for positioning
-  blueVirus();
+  blueVirus(0,0,5);
+  redVirus(0,0,10);
   computerCollision();
   
 
@@ -29,5 +30,6 @@ function create() {
 
 function update() {
   game.physics.arcade.collide(blueVirus, platforms);
+  
 }
 

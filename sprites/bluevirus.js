@@ -1,6 +1,8 @@
-var blueVirus = function(x,y) {
+var blueVirus = function(x,y,number) {
   x = x || 0;
   y = y || 0;
+
+   console.log('spawning bluevirusSprite');
 
   var walkPNGs = [
   "blue/walk/01.png", 
@@ -31,35 +33,54 @@ var blueVirus = function(x,y) {
 
 
 
-  var blueVirus = game.add.sprite(0+x, 480+y, 'viruses', "blue/walk/01.png");
+  var addMovement = function(virus){
+	game.physics.arcade.enable(virus);
+    virus.body.collideWorldBounds = true;
+    virus.inputEnabled = true;
+    virus.input.enableDrag(true);
+
+    virus.events.onDragStart.add(startDrag, this);
+    virus.events.onDragStop.add(stopDrag, this);
+
+    virus.animations.add('walk', walkPNGs, 15, true);
+    virus.animations.add('airwalk', walkPNGs, 45, true);
+    virus.animations.play('walk');
+
+    var tween = game.add.tween(virus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+
+
+	  function startDrag(virus){
+	    virus.animations.play('airwalk');
+	    virus.body.moves = false;
+	    tween.pause();
+	  }
+
+	  function stopDrag(virus){
+	      virus.body.moves = true;
+	      virus.animations.play('walk');
+	      tween = game.add.tween(virus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+	  }
+  }
+
+
+  for(var i = 0; i < number; i++){
+  	var blueViruses = game.add.group();
+  	var blueVirus = blueViruses.create(0+x, 480+y, 'viruses', "blue/walk/01.png");
+  	addMovement(blueVirus);
+  }
   
-  game.physics.arcade.enable(blueVirus);
-  blueVirus.body.collideWorldBounds = true;
-  blueVirus.inputEnabled = true;
-  blueVirus.input.enableDrag(true);
 
-  blueVirus.events.onDragStart.add(startDrag, this);
-  blueVirus.events.onDragStop.add(stopDrag, this);
 
-  blueVirus.animations.add('walk', walkPNGs, 15, true);
-  blueVirus.animations.add('airwalk', walkPNGs, 45, true);
-  blueVirus.animations.play('walk');
+  //var blueVirus = game.add.sprite(0+x, 480+y, 'viruses', "blue/walk/01.png");
+
+
+  
+
 
   // blueVirus.animations.add('attack', attackPNGs, 15, true);
   // blueVirus.animations.play('attack');
 
-  var tween = game.add.tween(blueVirus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+  
 
-  function startDrag(){
-    blueVirus.animations.play('airwalk');
-    blueVirus.body.moves = false;
-    tween.pause();
-  }
-
-  function stopDrag(){
-      blueVirus.body.moves = true;
-      blueVirus.animations.play('walk');
-      tween = game.add.tween(blueVirus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
-  }
 
 };
