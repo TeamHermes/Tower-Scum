@@ -15,12 +15,19 @@ function preload() {
 }
 
 function create() {
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+  game.physics.arcade.gravity.y = 100;
+  platform();
+  
   compSprite(); //takes x and y coordinates for positioning
+  blueVirus();
   computerCollision();
+  
+
 }
 
 
 function update() {
-
+  game.physics.arcade.collide(blueVirus, platforms);
 }
 

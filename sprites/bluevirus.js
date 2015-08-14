@@ -26,13 +26,37 @@ var blueVirus = function(x,y) {
   "blue/die/03.png"
   ];
 
+  // game.physics.startSystem(Phaser.Physics.ARCADE);
+  // game.physics.arcade.gravity.y = 100;
+
+
+
   var blueVirus = game.add.sprite(0+x, 480+y, 'viruses', "blue/walk/01.png");
   
+  game.physics.arcade.enable(blueVirus);
+  blueVirus.body.collideWorldBounds = true;
+  blueVirus.inputEnabled = true;
+  blueVirus.input.enableDrag(true);
+
+  blueVirus.events.onDragStart.add(startDrag, this);
+  blueVirus.events.onDragStop.add(stopDrag, this);
+
   blueVirus.animations.add('walk', walkPNGs, 15, true);
   blueVirus.animations.play('walk');
 
-  blueVirus.animations.add('attack', attackPNGs, 15, true);
-  blueVirus.animations.play('attack');
+  // blueVirus.animations.add('attack', attackPNGs, 15, true);
+  // blueVirus.animations.play('attack');
 
-  game.add.tween(blueVirus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
-}
+  var tween = game.add.tween(blueVirus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+
+  function startDrag(tween){
+    blueVirus.animations.stop(null, true);
+    blueVirus.body.moves = false;
+    tween.pause();
+  }
+
+  function stopDrag(){
+      blueVirus.body.moves = true;
+  }
+
+};
