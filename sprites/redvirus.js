@@ -1,5 +1,5 @@
-
-var redVirus = function(x,y,number){ //x and y coordinates for positioning
+console.log('loading redvirus sprite');
+var redVirus = function(that, x, y, number){ //x and y coordinates for positioning
   x = x || 0;
   y = x || 0;
 
@@ -36,12 +36,12 @@ var redVirus = function(x,y,number){ //x and y coordinates for positioning
 	var stopDrag = function(virus){
 	      virus.body.moves = true;
 	      virus.animations.play('walk');
-	      tween = game.add.tween(virus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+	      tween = that.game.add.tween(virus).to({ x: that.game.width }, 10000, Phaser.Easing.Linear.None, true);
 	      console.log('stopDrag on redVirus');
 	  }
 
 
-	game.physics.arcade.enable(virus);
+	that.game.physics.arcade.enable(virus);
     virus.body.collideWorldBounds = true;
     virus.inputEnabled = true;
     virus.input.enableDrag(true);
@@ -53,18 +53,19 @@ var redVirus = function(x,y,number){ //x and y coordinates for positioning
     virus.animations.add('airwalk', walkPNGs, 45, true);
     virus.animations.play('walk');
 
-    var tween = game.add.tween(virus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+    var tween = that.game.add.tween(virus).to({ x: that.game.width }, 10000, Phaser.Easing.Linear.None, true);
     virus.enableBody = true;
     virus.body.gravity.y = 100
 
 	
   }
 
+
+
   for(var i = 0; i < number; i++){
-  	var redViruses = game.add.group();
+  	var redViruses = that.game.add.group();
   	var redVirus = redViruses.create(0+x, 480+y, 'viruses', "red/walk/01.png");
   	addMovement(redVirus);
   }
-  
 
 };
