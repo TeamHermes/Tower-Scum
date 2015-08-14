@@ -22,6 +22,7 @@ towerScum.prototype = {
     computerCollision(this);
 
     blueVirus(this, 0, 0, 5)
+    redVirus(this, 0, 0, 3)
 
 
 
@@ -37,6 +38,10 @@ towerScum.prototype = {
 
   	this.game.physics.arcade.collide(blueViruses, ground, null, null, null);
   	this.game.physics.arcade.collide(blueViruses, collisionLine, attack, null, null);
+  	
+  	this.game.physics.arcade.collide(redViruses, ground, null, null, null);
+  	this.game.physics.arcade.collide(redViruses, collisionLine, attack, null, null);
+
   }
 }
 

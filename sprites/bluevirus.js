@@ -71,8 +71,10 @@ var blueVirus = function(that, x, y, number) {
   blueViruses.enableBody = true;
   blueViruses.physicsBodyType = Phaser.Physics.ARCADE;
   for(var i = 0; i < number; i++){
-  	var blueVirus = blueViruses.create(0+x, 480+y, 'viruses', "blue/walk/01.png");
-  	addMovement(blueVirus);
+  	setTimeout(function(){
+  		var blueVirus = blueViruses.create(0+x, 480+y, 'viruses', "blue/walk/01.png");
+  		addMovement(blueVirus);
+  	}, i*1000)
   }
   
   //var blueVirus = game.add.sprite(0+x, 480+y, 'viruses', "blue/walk/01.png");

@@ -21,6 +21,7 @@ preload.prototype = {
     this.game.load.image("background", "assets/bg.png");
   	this.game.load.image("ground", "assets/ground.png");
   	var blueViruses;
+  	var redViruses;
   	var ground;
   	var collisionLine;
   },
