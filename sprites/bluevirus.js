@@ -42,6 +42,7 @@ var blueVirus = function(x,y) {
   blueVirus.events.onDragStop.add(stopDrag, this);
 
   blueVirus.animations.add('walk', walkPNGs, 15, true);
+  blueVirus.animations.add('airwalk', walkPNGs, 45, true);
   blueVirus.animations.play('walk');
 
   // blueVirus.animations.add('attack', attackPNGs, 15, true);
@@ -49,14 +50,16 @@ var blueVirus = function(x,y) {
 
   var tween = game.add.tween(blueVirus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
 
-  function startDrag(tween){
-    blueVirus.animations.stop(null, true);
+  function startDrag(){
+    blueVirus.animations.play('airwalk');
     blueVirus.body.moves = false;
     tween.pause();
   }
 
   function stopDrag(){
       blueVirus.body.moves = true;
+      blueVirus.animations.play('walk');
+      tween = game.add.tween(blueVirus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
   }
 
 };
