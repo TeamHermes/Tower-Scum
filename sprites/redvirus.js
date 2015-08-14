@@ -36,7 +36,8 @@ var redVirus = function(that, x, y, number){ //x and y coordinates for positioni
 	var stopDrag = function(virus){
 	      virus.body.moves = true;
 	      virus.animations.play('walk');
-	      tween = that.game.add.tween(virus).to({ x: that.game.width }, 10000, Phaser.Easing.Linear.None, true);
+	      virus.body.velocity.x = 100
+	      //tween = that.game.add.tween(virus).to({ x: that.game.width }, 10000, Phaser.Easing.Linear.None, true);
 	      console.log('stopDrag on redVirus');
 	  }
 
@@ -50,22 +51,29 @@ var redVirus = function(that, x, y, number){ //x and y coordinates for positioni
     virus.events.onDragStop.add(stopDrag, this);
 
     virus.animations.add('walk', walkPNGs, 15, true);
+    virus.animations.add('attack', attackPNGs, 15, true);
+    virus.animations.add('die', diePNGs, 15, true);
+
     virus.animations.add('airwalk', walkPNGs, 45, true);
     virus.animations.play('walk');
 
-    var tween = that.game.add.tween(virus).to({ x: that.game.width }, 10000, Phaser.Easing.Linear.None, true);
+    //var tween = that.game.add.tween(virus).to({ x: that.game.width }, 10000, Phaser.Easing.Linear.None, true);
     virus.enableBody = true;
     virus.body.gravity.y = 100
-
+    virus.body.velocity.x = 100
 	
   }
 
 
-
+  redViruses = that.game.add.group();
+  redViruses.enableBody = true;
+  redViruses.physicsBodyType = Phaser.Physics.ARCADE;
   for(var i = 0; i < number; i++){
-  	var redViruses = that.game.add.group();
-  	var redVirus = redViruses.create(0+x, 480+y, 'viruses', "red/walk/01.png");
-  	addMovement(redVirus);
+  	setTimeout(function(){
+  		var redVirus = redViruses.create(0+x, 480+y, 'viruses', "red/walk/01.png");
+  		addMovement(redVirus);
+  	}, (i*1000)+500)
+  	
   }
 
 };

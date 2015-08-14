@@ -4,13 +4,16 @@ var computerCollision = function(that,x,y){ //x and y coordinates for positionin
 
   console.log('spawning redvirusSprite');
 
-  var collisionLine = that.game.add.group();
-  for(var i = 0; i < 28; i++){
-  	collisionLine.create(x+(3*i), y+(i*1.5), 'computerCollision');
-  }
+  collisionLine = that.game.add.group();
 
+  that.game.physics.startSystem(Phaser.Physics.ARCADE);
   collisionLine.enableBody = true;
-  //collisionLine.body.immovable = true;
+  for(var i = 0; i < 28; i++){
+  	var line = collisionLine.create(x+(3*i), y+(i*1.5), 'computerCollision');
+  	line.body.immovable = true;
+  }
+  
+  
 
 
 };

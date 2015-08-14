@@ -38,13 +38,14 @@ var blueVirus = function(that, x, y, number) {
   	var startDrag = function(virus){
 	    virus.animations.play('airwalk');
 	    virus.body.moves = false;
-	    tween.pause();
+	    //tween.pause();
 	  }
 
 	var stopDrag = function(virus){
 	      virus.body.moves = true;
 	      virus.animations.play('walk');
-	      tween = that.game.add.tween(virus).to({ x: that.game.width }, 10000, Phaser.Easing.Linear.None, true);
+	      virus.body.velocity.x = 100
+	      //tween = that.game.add.tween(virus).to({ x: that.game.width }, 10000, Phaser.Easing.Linear.None, true);
 	  }
 
 	that.game.physics.arcade.enable(virus);
@@ -56,21 +57,24 @@ var blueVirus = function(that, x, y, number) {
     virus.events.onDragStop.add(stopDrag, this);
 
     virus.animations.add('walk', walkPNGs, 15, true);
+    virus.animations.add('attack', attackPNGs, 15, true);
     virus.animations.add('airwalk', walkPNGs, 45, true);
     virus.animations.play('walk');
 
-    var tween = that.game.add.tween(virus).to({ x: that.game.width }, 10000, Phaser.Easing.Linear.None, true);
-    virus.enableBody = true;
-    virus.body.gravity.y = 100
-
+    //var tween = that.game.add.tween(virus).to({ x: that.game.width }, 10000, Phaser.Easing.Linear.None, true);
+    virus.body.gravity.y = 300
+    virus.body.velocity.x = 100
 
   }
 
-
+  blueViruses = that.game.add.group();
+  blueViruses.enableBody = true;
+  blueViruses.physicsBodyType = Phaser.Physics.ARCADE;
   for(var i = 0; i < number; i++){
-  	var blueViruses = that.game.add.group();
-  	var blueVirus = blueViruses.create(0+x, 480+y, 'viruses', "blue/walk/01.png");
-  	addMovement(blueVirus);
+  	setTimeout(function(){
+  		var blueVirus = blueViruses.create(0+x, 480+y, 'viruses', "blue/walk/01.png");
+  		addMovement(blueVirus);
+  	}, i*1000)
   }
   
   //var blueVirus = game.add.sprite(0+x, 480+y, 'viruses', "blue/walk/01.png");
