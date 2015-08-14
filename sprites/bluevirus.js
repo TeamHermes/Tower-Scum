@@ -1,4 +1,4 @@
-var blueVirus = function(x,y,number) {
+var blueVirus = function(that, x, y, number) {
   x = x || 0;
   y = y || 0;
 
@@ -44,10 +44,10 @@ var blueVirus = function(x,y,number) {
 	var stopDrag = function(virus){
 	      virus.body.moves = true;
 	      virus.animations.play('walk');
-	      tween = game.add.tween(virus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+	      tween = that.game.add.tween(virus).to({ x: that.game.width }, 10000, Phaser.Easing.Linear.None, true);
 	  }
 
-	game.physics.arcade.enable(virus);
+	that.game.physics.arcade.enable(virus);
     virus.body.collideWorldBounds = true;
     virus.inputEnabled = true;
     virus.input.enableDrag(true);
@@ -59,7 +59,7 @@ var blueVirus = function(x,y,number) {
     virus.animations.add('airwalk', walkPNGs, 45, true);
     virus.animations.play('walk');
 
-    var tween = game.add.tween(virus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+    var tween = that.game.add.tween(virus).to({ x: that.game.width }, 10000, Phaser.Easing.Linear.None, true);
     virus.enableBody = true;
     virus.body.gravity.y = 100
 
@@ -68,13 +68,11 @@ var blueVirus = function(x,y,number) {
 
 
   for(var i = 0; i < number; i++){
-  	var blueViruses = game.add.group();
+  	var blueViruses = that.game.add.group();
   	var blueVirus = blueViruses.create(0+x, 480+y, 'viruses', "blue/walk/01.png");
   	addMovement(blueVirus);
   }
   
-  game.physics.arcade.enable(blueVirus);
-
   //var blueVirus = game.add.sprite(0+x, 480+y, 'viruses', "blue/walk/01.png");
 
 

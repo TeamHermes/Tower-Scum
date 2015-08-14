@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <script type="text/javascript" src="js/phaser.js"></script>
-
-</head>
-<body>
-
-  <script type="text/javascript" src="towerscum.js"></script>
-
-</body>
+   <script type="text/javascript" src="js/phaser.js"></script>
+   <script type="text/javascript" src="states/boot.js"></script>
+   <script type="text/javascript" src="states/preload.js"></script>
+   <script type="text/javascript" src="states/menu.js"></script>
+   <script type="text/javascript" src="towerscum.js"></script>
+   <script type="text/javascript" src="states/gameover.js"></script>	
+   <script>
+     (function() {
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game');
+        game.state.add("Boot",boot);
+        game.state.add("Preload",preload);
+        game.state.add("Menu",menu);
+        game.state.add("TowerScum",towerScum);
+        game.state.add("GameOver",gameOver);
+        game.state.start("Boot");
+      })();    
+    </script>
+    </head>
+    <body> 	
+    </body>
 </html>
