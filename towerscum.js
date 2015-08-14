@@ -11,25 +11,30 @@ function preload() {
   game.load.atlas('viruses','assets/viruses/viruses.png', 'assets/viruses/viruses.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
   game.load.script('loadSprites.js', 'sprites/loadSprites.js');
   game.load.spritesheet('computerCollision', 'assets/collision_p.png', 3, 3);
+  game.load.image("background", "assets/bg.png");
+  game.load.image("ground", "assets/ground_p.png");
   // game.load.image('computer','assets/computer.gif');
 }
 
 function create() {
+  var bg = game.add.sprite(0,0,'background');
+  bg.width = 800;
+  bg.height = 600;
   game.physics.startSystem(Phaser.Physics.ARCADE);
-  game.physics.arcade.gravity.y = 100;
   platform();
   
-  compSprite(); //takes x and y coordinates for positioning
+  compSprite(0, -20); //takes x and y coordinates for positioning
+  redVirus(0,0,3);
   blueVirus(0,0,5);
-  redVirus(0,0,10);
-  computerCollision();
+
+  computerCollision(0, -20);
   
 
 }
 
 
 function update() {
-  game.physics.arcade.collide(blueVirus, platforms);
-  
+
+
 }
 

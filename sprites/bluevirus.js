@@ -1,3 +1,4 @@
+
 var blueVirus = function(x,y,number) {
   x = x || 0;
   y = y || 0;
@@ -34,7 +35,19 @@ var blueVirus = function(x,y,number) {
 
 
   var addMovement = function(virus){
-	game.physics.arcade.enable(virus);
+
+  	var startDrag = function(virus){
+	    virus.animations.play('airwalk');
+	    virus.body.moves = false;
+	    tween.pause();
+	}
+
+	var stopDrag = function(virus){
+	      virus.body.moves = true;
+	      virus.animations.play('walk');
+	      tween = game.add.tween(virus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+	}
+
     virus.body.collideWorldBounds = true;
     virus.inputEnabled = true;
     virus.input.enableDrag(true);
@@ -47,19 +60,9 @@ var blueVirus = function(x,y,number) {
     virus.animations.play('walk');
 
     var tween = game.add.tween(virus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
+    virus.body.gravity.y = 100
 
 
-	  function startDrag(virus){
-	    virus.animations.play('airwalk');
-	    virus.body.moves = false;
-	    tween.pause();
-	  }
-
-	  function stopDrag(virus){
-	      virus.body.moves = true;
-	      virus.animations.play('walk');
-	      tween = game.add.tween(virus).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
-	  }
   }
 
 
@@ -69,6 +72,7 @@ var blueVirus = function(x,y,number) {
   	addMovement(blueVirus);
   }
   
+};
 
 
   //var blueVirus = game.add.sprite(0+x, 480+y, 'viruses', "blue/walk/01.png");

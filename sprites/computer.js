@@ -1,6 +1,8 @@
 var compSprite = function(x,y){ //x and y coordinates for positioning
   x = x || 0;
-  y = x || 0;
+  y = y || 0;
+
+
 
   var wheels = game.add.sprite(700+x, 485+y, 'maincomp', 'wheels_01.png');
   wheels.animations.add('spin', ['wheels_01.png','wheels_02.png','wheels_03.png','wheels_04.png','wheels_05.png'], 15, true);
@@ -23,4 +25,7 @@ var compSprite = function(x,y){ //x and y coordinates for positioning
   controlPanel.animations.play('blink');
   controlPanel.width = ratio(72);
   controlPanel.height = ratio(48);
+
+  console.log('This is x of compSprite'+ x);
+  console.log('This is y of compSprite'+ y);
 };
