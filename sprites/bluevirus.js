@@ -37,6 +37,7 @@ var blueVirus = function(that, x, y, number, virusDead) {
   var startDrag = function(virus){
     virus.animations.play('airwalk');
     virus.body.moves = false;
+    virus.input.boundsSprite = bg;
      //tween.pause();
   }
 
@@ -65,6 +66,7 @@ var blueVirus = function(that, x, y, number, virusDead) {
     virus.body.collideWorldBounds = true;
     virus.inputEnabled = true;
     virus.input.enableDrag(true);
+    virus.input.boundsSprite = gameCanvas;
 
     virus.events.onDragStart.add(startDrag, this);
     virus.events.onDragStop.add(stopDrag, this);
