@@ -1,10 +1,10 @@
 var towerScum = function(game){}
-var health = 128;
+var health = 128; //set it to whatever value this.barProgress equal to.
 
  var attack = function(virus){
  	console.log('attacking');
     virus.animations.play('attack');
-    health--;
+    health--; //health decrement
     virus.y = virus.y - 25;
   }
 
@@ -25,11 +25,14 @@ towerScum.prototype = {
 
     blueVirus(this, 0, 0, 5)
     redVirus(this, 0, 0, 3)
+ 
     this.outerbar = this.add.bitmapData(134, 13);
     this.outerbar.context.fillStyle = '#00685e';
     this.outerbar.fill()
-    this.barProgress = 128;      
+   
+    this.barProgress = 128;//this is the health setter this.barProgress = 300 means 300 health. 
     this.bar = this.add.bitmapData(128, 10); //sets width and height for bar
+    
     this.game.add.sprite(633, 298, this.outerbar); //outerbar
     this.game.add.sprite(700 - (this.bar.width * 0.5), 300, this.bar);//x and y coordinates of bar 700,300
 
@@ -66,7 +69,6 @@ towerScum.prototype = {
         
     this.bar.context.fillRect(0, 0, this.barProgress, 8);
     this.game.add.tween(this).to({barProgress: health}, 100, null, true, 0); //each hit health updates and bar shrinks
-
     this.bar.dirty = true; //apparently this line is important but I dont know why
   },
 
