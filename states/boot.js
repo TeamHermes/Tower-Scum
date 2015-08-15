@@ -5,6 +5,7 @@ var boot = function(game){
 boot.prototype = {
   preload: function(){
     this.game.load.image("loading","assets/loading.png"); 
+    this.game.time.advancedTiming = true; //needed for fps to show on top left
   },
   create: function(){
   	console.log('Booting...');

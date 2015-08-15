@@ -29,7 +29,6 @@ var redVirus = function(that, x, y, number){ //x and y coordinates for positioni
   	var startDrag = function(virus){
 	    virus.animations.play('airwalk');
 	    virus.body.moves = false;
-	    tween.pause();
 	    console.log('startDrag on redVirus');
     }
 
@@ -37,7 +36,6 @@ var redVirus = function(that, x, y, number){ //x and y coordinates for positioni
         virus.body.moves = true;
         virus.animations.play('walk');
         virus.body.velocity.x = 100
-        console.log(virus.y)
   
         if (virus.y < 200){ // top of map = -10 or something bottom is like 590?
           virus.animations.stop('walk');
