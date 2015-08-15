@@ -1,9 +1,12 @@
 var towerScum = function(game){}
+var health = 300;
 
  var attack = function(virus){
  	console.log('attacking');
-  	virus.animations.play('attack');
-  	virus.y = virus.y - 25;
+    virus.animations.play('attack');
+    health--;
+    console.log(health);
+    virus.y = virus.y - 25;
   }
 
 towerScum.prototype = {
