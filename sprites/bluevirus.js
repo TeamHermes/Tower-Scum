@@ -45,7 +45,6 @@ var blueVirus = function(that, x, y, number, virusDead) {
         virus.body.moves = true;
         virus.animations.play('walk');
         virus.body.velocity.x = 100
-        console.log(virus.y)
   
         if (virus.y < 200){ // top of map = -10 or something bottom is like 590?
           virus.animations.stop('walk');
