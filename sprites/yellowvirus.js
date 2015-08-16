@@ -1,34 +1,35 @@
-console.log('loading redvirus sprite');
-var redVirus = function(that, x, y, number){ //x and y coordinates for positioning
+console.log('loading yellowvirus sprite');
+var yellowVirus = function(that, x, y, number){ //x and y coordinates for positioning
   x = x || 0;
   y = x || 0;
 
-  console.log('spawning redvirusSprite');
+  console.log('spawning yellowvirusSprite');
 
-  var walkPNGs = ['red/walk/01.png',
-                  'red/walk/02.png',
-                  'red/walk/03.png',
-                  'red/walk/04.png',
-                  'red/walk/05.png',
-                  'red/walk/06.png',
-                  'red/walk/07.png',
-                  'red/walk/08.png'];
+  var walkPNGs = ['yellow/walk/01.png',
+                  'yellow/walk/02.png',
+                  'yellow/walk/03.png',
+                  'yellow/walk/04.png',
+                  'yellow/walk/05.png',
+                  'yellow/walk/06.png',
+                  'yellow/walk/07.png',
+                  'yellow/walk/08.png'];
 
-  var diePNGs = ['red/die/01.png',
-                'red/die/02.png',
-                'red/die/03.png'];
+  var diePNGs = ['yellow/die/01.png',
+                'yellow/die/02.png',
+                'yellow/die/03.png'];
 
-  var attackPNGs = ['red/attack/01.png',
-                    'red/attack/02.png',
-                    'red/attack/03.png',
-                    'red/attack/04.png',
-                    'red/attack/05.png'];
+  var attackPNGs = ['yellow/attack/01.png',
+                    'yellow/attack/02.png',
+                    'yellow/attack/03.png',
+                    'yellow/attack/04.png',
+                    'yellow/attack/05.png'];
 
   var addMovement = function(virus){
 
   	var startDrag = function(virus){
 	    virus.animations.play('airwalk');
 	    virus.body.moves = false;
+	    tween.pause();
 	    console.log('startDrag on redVirus');
     }
 
@@ -36,6 +37,7 @@ var redVirus = function(that, x, y, number){ //x and y coordinates for positioni
         virus.body.moves = true;
         virus.animations.play('walk');
         virus.body.velocity.x = 100
+        console.log(virus.y)
   
         if (virus.y < 200){ // top of map = -10 or something bottom is like 590?
           virus.animations.stop('walk');
@@ -44,7 +46,7 @@ var redVirus = function(that, x, y, number){ //x and y coordinates for positioni
           }, 2000);
           setTimeout(function(){
           virus.kill();
-          redViruses.remove(virus);
+          yellowViruses.remove(virus);
           }, 2150);
           virus.body.velocity.x = 50;
           virus.body.velocity.y = 0;
@@ -74,14 +76,14 @@ var redVirus = function(that, x, y, number){ //x and y coordinates for positioni
   }
 
 
-  redViruses = that.game.add.group();
-  redViruses.enableBody = true;
-  redViruses.physicsBodyType = Phaser.Physics.ARCADE;
+  yellowViruses = that.game.add.group();
+  yellowViruses.enableBody = true;
+  yellowViruses.physicsBodyType = Phaser.Physics.ARCADE;
   for(var i = 0; i < number; i++){
   	setTimeout(function(){
-  		var redVirus = redViruses.create(0+x, 480+y, 'viruses', "red/walk/01.png");
+  		var yellowVirus = yellowViruses.create(0+x, 480+y, 'viruses', "yellow/walk/01.png");
   		addMovement(redVirus);
-  	}, (i*1000)+500)
+  	}, (i*1000)+250)
   	
   }
 

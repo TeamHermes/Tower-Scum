@@ -53,6 +53,7 @@ var blueVirus = function(that, x, y, number, virusDead) {
           }, 2000);
           setTimeout(function(){
           virus.kill();
+          blueViruses.remove(virus);
           }, 2150);
           virus.body.velocity.x = 50;
           virus.body.velocity.y = 0;
