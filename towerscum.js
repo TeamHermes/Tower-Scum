@@ -6,7 +6,7 @@ var yellowViruses = {};
  var attack = function(virus){
  	console.log('attacking');
     virus.animations.play('attack');
-    health--;
+    health -= .25;
     virus.y = virus.y - 25;
   }
 
