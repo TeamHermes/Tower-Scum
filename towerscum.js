@@ -35,7 +35,6 @@ towerScum.prototype = {
    rounds : {
 	1: function(context){
 	    blueVirus(context, 0, 0, 5)
-      yellowVirus(context, 0, 0, 1);
 		},
 	2: function(context){
 	    blueVirus(context, 0, 0, 7)
