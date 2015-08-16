@@ -1,8 +1,14 @@
 var towerScum = function(game){}
 var health = 128;
+
+var score = 0;
+var scoreString = '';
+var scoreText;
+
 var redViruses = {};
 var blueViruses = {};
 var yellowViruses = {};
+
  var attack = function(virus){
  	console.log('attacking');
     virus.animations.play('attack');
@@ -21,7 +27,7 @@ towerScum.prototype = {
   	}else{
 
   		var totalLeft = blueViruses.children.length;
-  		console.log('total left: ', totalLeft)
+  		// console.log('total left: ', totalLeft)
   	}
   	
   	if(!totalLeft ){
@@ -106,6 +112,8 @@ towerScum.prototype = {
 
     this.rounds[this.round](this);
 
+
+    //health bar
     this.outerbar = this.add.bitmapData(134, 13);
     this.outerbar.context.fillStyle = '#00685e';
     this.outerbar.fill()
@@ -115,6 +123,10 @@ towerScum.prototype = {
     this.game.add.sprite(700 - (this.bar.width * 0.5), 300, this.bar);//x and y coordinates of bar 700,300
 
 
+    //score related functions
+
+    scoreString = 'Score : ';
+    scoreText = this.game.add.text(10, 10, scoreString + score, { font: '28px Calibri', fill: '#fff' });
   },
 
 

@@ -52,8 +52,12 @@ var blueVirus = function(that, x, y, number, virusDead) {
             virus.animations.play('die');
           }, 2000);
           setTimeout(function(){
-          virus.kill();
-          blueViruses.remove(virus);
+            virus.kill();
+            
+            score += 20;
+            scoreText.text = scoreString + score; //score displayed
+            
+            blueViruses.remove(virus);
           }, 2150);
           virus.body.velocity.x = 50;
           virus.body.velocity.y = 0;

@@ -43,8 +43,12 @@ var redVirus = function(that, x, y, number){ //x and y coordinates for positioni
             virus.animations.play('die');
           }, 2000);
           setTimeout(function(){
-          virus.kill();
-          redViruses.remove(virus);
+            virus.kill();
+
+            score += 20;
+            scoreText.text = scoreString + score; //score displayed
+            
+            redViruses.remove(virus);
           }, 2150);
           virus.body.velocity.x = 50;
           virus.body.velocity.y = 0;
