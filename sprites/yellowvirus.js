@@ -36,7 +36,8 @@ var yellowVirus = function(that, x, y, number){ //x and y coordinates for positi
   var stopDrag = function(virus){
         virus.body.moves = true;
         virus.animations.play('walk');
-        virus.body.velocity.x = 100
+        virus.body.velocity.x = 100;
+        virus.body.velocity.x += 25;
         console.log(virus.y)
   
         if (virus.y < 200){ // top of map = -10 or something bottom is like 590?
@@ -82,7 +83,7 @@ var yellowVirus = function(that, x, y, number){ //x and y coordinates for positi
   for(var i = 0; i < number; i++){
   	setTimeout(function(){
   		var yellowVirus = yellowViruses.create(0+x, 480+y, 'viruses', "yellow/walk/01.png");
-  		addMovement(redVirus);
+  		addMovement(yellowVirus);
   	}, (i*1000)+250)
   	
   }
