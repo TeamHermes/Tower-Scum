@@ -35,6 +35,7 @@ towerScum.prototype = {
    rounds : {
 	1: function(context){
 	    blueVirus(context, 0, 0, 5)
+      yellowVirus(context, 0, 0, 1)
 		},
 	2: function(context){
 	    blueVirus(context, 0, 0, 7)
@@ -46,6 +47,7 @@ towerScum.prototype = {
 	4: function(context){
 	    blueVirus(context, 0, 0, 15)
 	    redVirus(context, 0, 0, 3)
+      yellowVirus(context, 0, 0, 1);
 		},
 	5: function(context){
 	    blueVirus(context, 0, 0, 15)
@@ -128,6 +130,8 @@ towerScum.prototype = {
   	this.game.physics.arcade.collide(redViruses, ground, null, null, null);
   	this.game.physics.arcade.collide(redViruses, collisionLine, attack, null, null);
 
+    this.game.physics.arcade.collide(yellowViruses, ground, null, null, null);
+    this.game.physics.arcade.collide(yellowViruses, collisionLine, attack, null, null);
 
   	this.bar.context.clearRect(0, 0, this.bar.width, this.bar.height);
      
