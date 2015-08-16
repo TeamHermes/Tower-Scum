@@ -49,8 +49,12 @@ var yellowVirus = function(that, x, y, number){ //x and y coordinates for positi
             virus.animations.play('die');
           }, 2000);
           setTimeout(function(){
-          virus.kill();
-          yellowViruses.remove(virus);
+            virus.kill();
+
+            score += 20;
+            scoreText.text = scoreString + score; //score displayed
+            
+            yellowViruses.remove(virus);
           }, 2150);
           virus.body.velocity.x = 50;
           virus.body.velocity.y = 0;
