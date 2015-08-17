@@ -231,6 +231,7 @@ towerScum.prototype = {
   		brokenComp.height = ratio(142);
   		mainComp.kill();
   		controlPanel.kill();
+  		this.game.state.start("GameOver",true,false,score);	
   	}
 
   },
