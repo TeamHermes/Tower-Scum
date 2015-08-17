@@ -168,11 +168,20 @@ towerScum.prototype = {
   		this.roundStarted = true;
   	}
 
+  	console.log(this.barProgress);
+
   	if(this.roundStarted){
   		this.endRound();
   	}
 
-
+  	if(this.barProgress <= 0){
+  		console.log("You have lost!");
+  		var brokenComp = this.game.add.sprite(560, 310, 'brokenComp');
+  		brokenComp.width = ratio(165);
+  		brokenComp.height = ratio(142);
+  		mainComp.kill();
+  		controlPanel.kill();
+  	}
 
   },
 
