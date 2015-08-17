@@ -22,11 +22,13 @@ preload.prototype = {
     this.game.load.script('goldswordy.js', 'sprites/goldswordy.js');
     this.game.load.script('computerCollision.js','sprites/computerCollision.js');
     this.game.load.script('createStage', 'sprites/createStage.js');
+    this.game.load.image('menubg', 'assets/menubg.jpg');
     this.game.load.image("background", "assets/bg.png");
-  	this.game.load.image("ground", "assets/ground.png");
-  	this.game.load.image("brokenComp", "assets/broken_computer.png");
-  	this.game.load.image("popup", "assets/popup.png");
-  	this.game.load.image("okay", "assets/okay.png");
+    this.game.load.image("ground", "assets/ground.png");
+    this.game.load.image("gametitle", "assets/gametitle.png");
+    this.game.load.image("brokenComp", "assets/broken_computer.png");
+    this.game.load.image("popup", "assets/popup.png");
+    this.game.load.image("okay", "assets/okay.png");
 
   },
     create: function(){
