@@ -8,6 +8,7 @@ var scoreText;
 var redViruses = {};
 var blueViruses = {};
 var yellowViruses = {};
+var swordyViruses = {};
 
 var roundText;
 var roundString;
@@ -17,13 +18,21 @@ var currentRoundText;
 var roundNumber = 1;
 
 var popup;
-
- var attack = function(virus){
- 	console.log('attacking');
+var attack = function(virus){
+	if(swordy){
+ 	  console.log('testg');
+ 	  virus.animations.play('wait');
+    virus.animations.play('attack');
+    health -= .25;
+    virus.y = virus.y - 25;		
+	}
+  else{
+ 	  console.log('attacking');
     virus.animations.play('attack');
     health -= .25;
     virus.y = virus.y - 25;
   }
+}
 
 towerScum.prototype = {
   ratio: function(number){
@@ -56,6 +65,7 @@ towerScum.prototype = {
   },
    rounds : {
 	1: function(context){
+		swordy(context, 0, 0, 5)
 	    blueVirus(context, 0, 0, 5)
 		},
 	2: function(context){
@@ -190,6 +200,10 @@ towerScum.prototype = {
     this.game.physics.arcade.collide(yellowViruses, ground, null, null, null);
     this.game.physics.arcade.collide(yellowViruses, collisionLine, attack, null, null);
 
+    this.game.physics.arcade.collide(swordyViruses, ground, null, null, null);
+    this.game.physics.arcade.collide(swordyViruses, collisionLine, attack, null, null);
+
+
   	this.bar.context.clearRect(0, 0, this.bar.width, this.bar.height);
      
      //color changes based on 50% health and 25% health
@@ -214,7 +228,7 @@ towerScum.prototype = {
   		this.roundStarted = true;
   	}
 
-  	console.log(this.barProgress);
+  	// console.log(this.barProgress);
 
   	if(this.roundStarted){
   		this.endRound();
