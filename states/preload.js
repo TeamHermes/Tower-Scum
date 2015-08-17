@@ -38,6 +38,9 @@ preload.prototype = {
     this.game.load.script('computerCollision.js','sprites/computerCollision.js');
     this.game.load.script('createStage', 'sprites/createStage.js');
 
+    //load sound
+    this.game.load.audio('bg', ['fx/bg.mp3']);
+
   },
     create: function(){
     console.log('Preloading data...');
