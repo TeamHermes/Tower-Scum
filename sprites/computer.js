@@ -4,14 +4,36 @@ var ratio = function(number){
   var result = number + (number * 0.5 );
   return result;
 };
+
+var doorsPNGs = [
+'doors/_01.png',
+'doors/_02.png',
+'doors/_03.png',
+'doors/_04.png',
+'doors/_05.png',
+'doors/_06.png',
+'doors/_07.png',
+'doors/_08.png',
+'doors/_09.png',
+'doors/_10.png',
+'doors/_11.png',
+'doors/_12.png',
+'doors/_13.png',
+'doors/_14.png',
+'doors/_15.png',
+'doors/_16.png',
+'missile/_04.png'
+];
+
 var wheels;
 var mainComp;
 var controlPanel;
+var weaponPanel;
 
-var compSprite = function(that,x,y){ //x and y coordinates for positioning
+var compSprite = function(that, x, y){ //x and y coordinates for positioning
 
   x = x || 0;
-  y = x || 0;
+  y = y || 0;
 
   wheels = that.game.add.sprite(700+x, 485+y, 'maincomp', 'wheels_01.png');
   wheels.animations.add('spin', ['wheels_01.png','wheels_02.png','wheels_03.png','wheels_04.png','wheels_05.png'], 15, true);
@@ -34,4 +56,24 @@ var compSprite = function(that,x,y){ //x and y coordinates for positioning
   controlPanel.animations.play('blink');
   controlPanel.width = ratio(72);
   controlPanel.height = ratio(48);
+
+};
+
+
+
+
+var weapon = function(that, x, y){
+  x = x || 0;
+  y = y || 0;
+
+  var fireWeapon = that.game.add.button(400,400,"button", fireMissiles, that);
+  fireWeapon.anchor.setTo(0.5,0.5);
+
+  weaponPanel = that.game.add.sprite(500+x, 300+y, 'missiles', 'doors/_02.png');
+  weaponPanel.animations.add('weaponFire', doorsPNGs, 15, true);
+};
+
+var fireMissiles = function(){
+  weaponPanel.animations.play('weaponFire', 10, false, true);
+  
 };
