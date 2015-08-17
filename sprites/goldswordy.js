@@ -3,6 +3,7 @@ var goldSwordy = function(that, x, y, number){ //x and y coordinates for positio
   x = x || 0;
   y = x || 0;
 
+  var drop = 0;
 
   console.log('spawning goldswordy');
 
@@ -45,9 +46,10 @@ var goldSwordy = function(that, x, y, number){ //x and y coordinates for positio
         virus.animations.play('walk');
         virus.body.velocity.x = 100;
         virus.body.velocity.x += 25;
-
-        
-        if (virus.y < 200){ // top of map = -10 or something bottom is like 590?
+        drop += 1;
+  
+        if (virus.y < 200 && drop === 2){ // top of map = -10 or something bottom is like 590?
+        	drop = 0;
           virus.animations.stop('walk');
           setTimeout(function(){
             virus.animations.play('die');
