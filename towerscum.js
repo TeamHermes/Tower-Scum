@@ -135,6 +135,9 @@ towerScum.prototype = {
   create: function() {
     console.log('Creating game...');
 
+    //create music
+    music = this.game.add.audio('bg');
+    music.play();
     
     createStage(this); //Loads stage
 
