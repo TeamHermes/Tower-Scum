@@ -9,6 +9,15 @@ var redViruses = {};
 var blueViruses = {};
 var yellowViruses = {};
 
+var roundText;
+var roundString;
+
+var currentRound;
+var currentRoundText;
+var roundNumber = 1;
+
+var popup;
+
  var attack = function(virus){
  	console.log('attacking');
     virus.animations.play('attack');
@@ -32,11 +41,18 @@ towerScum.prototype = {
   	
   	if(!totalLeft ){
   		console.log('round ended')
-  		alert('end of round!');
-  		this.roundStarted = false;
-  		this.round++;
-  		this.rounds[this.round](this);
+  		tween = this.game.add.tween(popup.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+  		popup.alpha = 1;
+  		
   	}
+  },
+  nextRound: function(){
+  	this.roundStarted = false;
+	this.round++;
+	roundNumber++;
+	this.rounds[this.round](this);
+	popup.alpha = 0;
+	tween = this.game.add.tween(popup.scale).to( { x: .1, y: .1 }, 1000, Phaser.Easing.Elastic.Out, true);
   },
    rounds : {
 	1: function(context){
@@ -127,6 +143,36 @@ towerScum.prototype = {
 
     scoreString = 'Score : ';
     scoreText = this.game.add.text(10, 10, scoreString + score, { font: '28px Calibri', fill: '#fff' });
+
+
+    //Current Round:
+    currentRound = 'Round : ';
+    currentRoundText = this.game.add.text(660, 10, currentRound + roundNumber, { font: '28px Calibri', fill: '#fff' });
+
+    //Round End Popup box
+    popup = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'popup');
+    popup.alpha = 0.0;
+    popup.anchor.set(0.5);
+    popup.inputEnabled = false;
+
+
+    var pw = (popup.width/2) - 260;
+    var ph = (popup.height / 2) - 8;
+
+    //  And click the close button to close it down again
+    var okayButton = this.game.make.sprite(pw, -ph, 'okay');
+    okayButton.inputEnabled = true;
+    okayButton.input.priorityID = 1;
+    okayButton.input.useHandCursor = true;
+    okayButton.events.onInputDown.add(this.nextRound, this);
+
+    roundString = 'ROUND CLEARED!';
+    roundText = this.game.make.text(pw+60, -ph+50, roundString,  { font: '16px Calibri', fill: '#fff' })
+
+    popup.addChild(roundText);
+    popup.addChild(okayButton);
+
+    popup.scale.set(0.1);
   },
 
 
