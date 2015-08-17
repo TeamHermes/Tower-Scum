@@ -72,4 +72,4 @@ There are many other functions that is probably missing in this list but this is
 
 ##Other references
 
-(Phaser docs)[http://phaser.io/docs]
+[Phaser docs](http://phaser.io/docs)
