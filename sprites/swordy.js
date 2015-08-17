@@ -3,8 +3,6 @@ var swordy = function(that, x, y, number){ //x and y coordinates for positioning
   x = x || 0;
   y = x || 0;
 
-  var drop = 0;
-
   console.log('spawning swordy');
 
   var walkPNGs = ['swordy/walk/01.png',
@@ -21,35 +19,33 @@ var swordy = function(that, x, y, number){ //x and y coordinates for positioning
                  'swordy/die/05.png',
                  'swordy/die/06.png'];
 
-  var attackPNGs = ['swordy/attack/01.png',
-                    'swordy/attack/02.png',
-                    'swordy/attack/03.png',
-                    'swordy/attack/04.png',
-                    'swordy/attack/05.png',
+  var attackPNGs = [
                     'swordy/attack/06.png',
                     'swordy/attack/07.png',
                     'swordy/attack/08.png',
                     'swordy/attack/09.png',
                     'swordy/attack/10.png'];
+  var waitPNGs = [
+                    'swordy/attack/01.png',
+                    'swordy/attack/02.png',
+                    'swordy/attack/03.png',
+                    'swordy/attack/04.png',
+                    'swordy/attack/05.png'];
 
   var addMovement = function(virus){
 
   	var startDrag = function(virus){
 	    virus.animations.play('airwalk');
 	    virus.body.moves = false;
-	    tween.pause();
-	    console.log('startDrag on redVirus');
+	    console.log('startDrag on swordy');
     }
 
   var stopDrag = function(virus){
         virus.body.moves = true;
         virus.animations.play('walk');
-        virus.body.velocity.x = 100;
-        virus.body.velocity.x += 25;
-        drop += 1;
-        console.log(virus.y)
+        virus.body.velocity.x = 100
   
-        if (virus.y < 200 && drop === 2){ // top of map = -10 or something bottom is like 590?
+        if (virus.y < 200){ // top of map = -10 or something bottom is like 590?
           virus.animations.stop('walk');
           setTimeout(function(){
             virus.animations.play('die');
@@ -77,8 +73,9 @@ var swordy = function(that, x, y, number){ //x and y coordinates for positioning
     virus.events.onDragStop.add(stopDrag, this);
 
     virus.animations.add('walk', walkPNGs, 15, true);
-    virus.animations.add('attack', attackPNGs, 15, true);
-    virus.animations.add('die', diePNGs, 15, true);
+    virus.animations.add('attack', attackPNGs, 10, true);
+    // virus.animations.add('wait', waitPNGs, 10, true);
+    virus.animations.add('die', diePNGs, 13, true);
     virus.animations.add('airwalk', walkPNGs, 45, true);
     virus.animations.play('walk');
 
@@ -95,9 +92,9 @@ var swordy = function(that, x, y, number){ //x and y coordinates for positioning
   swordyViruses.physicsBodyType = Phaser.Physics.ARCADE;
   for(var i = 0; i < number; i++){
   	setTimeout(function(){
-  		var swordy = swordyViruses.create(0+x, 480+y, 'viruses', "swordy/walk/01.png");
-  		addMovement(swordyVirus);
-  	}, (i*1000)+250)
+  		var swordy = swordyViruses.create(0+x, 440+y, 'viruses', "swordy/walk/01.png");
+  		addMovement(swordy);
+  	}, (i*1000)+500)
   	
   }
 
