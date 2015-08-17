@@ -22,6 +22,8 @@ preload.prototype = {
     this.game.load.image("background", "assets/bg.png");
   	this.game.load.image("ground", "assets/ground.png");
   	this.game.load.image("brokenComp", "assets/broken_computer.png");
+  	this.game.load.image("popup", "assets/popup.png");
+  	this.game.load.image("okay", "assets/okay.png");
 
   },
     create: function(){
