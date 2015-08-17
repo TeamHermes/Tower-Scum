@@ -8,6 +8,7 @@ var scoreText;
 var redViruses = {};
 var blueViruses = {};
 var yellowViruses = {};
+var swordyViruses = {};
 
  var attack = function(virus){
  	console.log('attacking');
