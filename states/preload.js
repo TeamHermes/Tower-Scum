@@ -10,6 +10,7 @@ preload.prototype = {
     this.game.load.image("play","assets/play.png");
     this.game.load.image("gameover","assets/gameover.png");
     this.game.load.atlas('maincomp','assets/maincomp/maincomp.png', 'assets/maincomp/maincomp.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+    this.game.load.atlas('missiles','assets/missiles/missiles.png', 'assets/missiles/missiles.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
     this.game.load.atlas('viruses','assets/viruses/viruses.png', 'assets/viruses/viruses.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
     this.game.load.script('loadSprites.js', 'sprites/loadSprites.js');
     this.game.load.spritesheet('computerCollision', 'assets/collision_t.png', 3, 3); // game.load.image('computer','assets/computer.gif');
