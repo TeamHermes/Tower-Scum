@@ -44,6 +44,7 @@ var yellowVirus = function(that, x, y, number){ //x and y coordinates for positi
         console.log(virus.y)
   
         if (virus.y < 200 && drop === 2){ // top of map = -10 or something bottom is like 590?
+        	drop = 0; //reset the drop once it goes through
           virus.animations.stop('walk');
           setTimeout(function(){
             virus.animations.play('die');
