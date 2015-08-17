@@ -22,7 +22,7 @@ var attack = function(virus){
     virus.animations.play('attack');
     health -= .25;
     virus.y = virus.y - 25;
-}
+};
 
 towerScum.prototype = {
   ratio: function(number){
@@ -47,9 +47,9 @@ towerScum.prototype = {
   },
   nextRound: function(){
   	this.roundStarted = false;
-	this.round++;
+
 	roundNumber++;
-	this.rounds[this.round](this);
+	this.rounds[roundNumber](this);
 	popup.alpha = 0;
 	tween = this.game.add.tween(popup.scale).to( { x: .1, y: .1 }, 1000, Phaser.Easing.Elastic.Out, true);
   },
@@ -127,7 +127,7 @@ towerScum.prototype = {
     //blueVirus(this, 0, 0, 5)
     //redVirus(this, 0, 0, 3)
 
-    this.rounds[this.round](this);
+    this.rounds[roundNumber](this);
 
 
     //health bar
@@ -233,6 +233,7 @@ towerScum.prototype = {
   		mainComp.kill();
   		controlPanel.kill();
   		this.game.state.start("GameOver",true,false,score);	
+      this.roundStarted = false;
   	}
 
   },
@@ -240,5 +241,5 @@ towerScum.prototype = {
   render: function(){
   	this.game.debug.text(this.game.time.fps || '--', 2, 14, "#00ff00");//shows fps on top left
   }
-}
+};
 
