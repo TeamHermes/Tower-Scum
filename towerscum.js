@@ -1,36 +1,49 @@
-var towerScum = function(game){}
+var towerScum = function(game){};
+
+//Global variables
+
+//HP
 var health = 128;
 
+//Score
 var score = 0;
 var scoreString = '';
 var scoreText;
 
+//Monsters
 var redViruses = {};
 var blueViruses = {};
 var yellowViruses = {};
 var swordyViruses = {};
 var goldswordyViruses = {};
 
+//Round
 var roundText;
 var roundString;
-
 var currentRound;
 var currentRoundText;
 var roundNumber = 1;
 
+//PopUp Box
 var popup;
+
+//Attack function
 var attack = function(virus){
     virus.animations.play('attack');
     health -= .25;
     virus.y = virus.y - 25;
 };
 
+//Game object
 towerScum.prototype = {
+  //Ratio to increase sprite size by 50%
   ratio: function(number){
     var result = number + (number * 0.5 );
     return result;
   },
+  //Function to check if round has ended
   endRound: function(){
+    //Checks how many monsters are left depending on what monsters are spawned
     if(redViruses.hasOwnProperty('children')){
       var totalLeft = blueViruses.children.length + redViruses.children.length;
     }else{
@@ -38,7 +51,7 @@ towerScum.prototype = {
       var totalLeft = blueViruses.children.length;
       // console.log('total left: ', totalLeft)
     }
-
+    //If there are no more monsters left, make the popup appear
     if(!totalLeft ){
       console.log('round ended')
       tween = this.game.add.tween(popup.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
@@ -46,14 +59,18 @@ towerScum.prototype = {
 
     }
    },
-  nextRound: function(){
-    this.roundStarted = false;
 
-  roundNumber++;
-  this.rounds[roundNumber](this);
-  popup.alpha = 0;
+   //Function to start next round
+  nextRound: function(){
+  this.roundStarted = false; //resets roundStarted to false so endRound won't be executed right away
+
+  roundNumber++; //Round gets increased
+  this.rounds[roundNumber](this); //spawns monsters for next round
+  popup.alpha = 0; //hides the popup box
   tween = this.game.add.tween(popup.scale).to( { x: .1, y: .1 }, 1000, Phaser.Easing.Elastic.Out, true);
   },
+
+  //Rounds object that contains functions to spawn monsters for each level respectively
    rounds : {
   1: function(context){
   	  goldSwordy(context, 0, 0, 2)
@@ -114,22 +131,21 @@ towerScum.prototype = {
 
 
 },
-  round: 1,
-
-
+  //Creates the game layout
   create: function() {
     console.log('Creating game...');
 
-    createStage(this);
+    
+    createStage(this); //Loads stage
 
-    compSprite(this); //takes x and y coordinates for positioning
-    weapon(this);
-    computerCollision(this);
+    compSprite(this); //Loads Sprite
+    weapon(this); //Loads weapon
+    computerCollision(this); //Loads collision line for computer
 
     //blueVirus(this, 0, 0, 5)
     //redVirus(this, 0, 0, 3)
 
-    this.rounds[roundNumber](this);
+    this.rounds[roundNumber](this); //Executes first round of monster (Round defaults as 1)
 
 
     //health bar
@@ -158,7 +174,7 @@ towerScum.prototype = {
     popup.anchor.set(0.5);
     popup.inputEnabled = false;
 
-
+    //Sets coordinates for okay button
     var pw = (popup.width/2) - 260;
     var ph = (popup.height / 2) - 8;
 
@@ -169,9 +185,11 @@ towerScum.prototype = {
     okayButton.input.useHandCursor = true;
     okayButton.events.onInputDown.add(this.nextRound, this);
 
+    //Text for Round Cleared popup box
     roundString = 'ROUND CLEARED!';
     roundText = this.game.make.text(pw+60, -ph+50, roundString,  { font: '16px Calibri', fill: '#fff' })
 
+    //Add Round Text and Okay Button to popup box
     popup.addChild(roundText);
     popup.addChild(okayButton);
 
@@ -181,9 +199,10 @@ towerScum.prototype = {
 
 
 
-
+  //Things to perform on every frame change
   update: function() {
 
+    //Checks for collision with ground and computer. Computer collision executes attack function
     this.game.physics.arcade.collide(blueViruses, ground, null, null, null);
     this.game.physics.arcade.collide(blueViruses, collisionLine, attack, null, null);
 
@@ -220,16 +239,19 @@ towerScum.prototype = {
 
     this.bar.dirty = true; //apparently this line is important but I dont know why
 
+    //If the basic monster has spawned, that means the round has started
     if(blueViruses.children.length){
       this.roundStarted = true;
     }
 
     // console.log(this.barProgress);
 
+    //If the round has started, we can begin to check if all monsters are dead
     if(this.roundStarted){
       this.endRound();
     }
-
+ 
+    //If HP is 0, change comp image to be broken and change to GameOver game state
     if(this.barProgress <= 0){
       console.log("You have lost!");
       var brokenComp = this.game.add.sprite(560, 310, 'brokenComp');

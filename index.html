@@ -11,12 +11,18 @@
    <script type="text/javascript" src="states/gameover.js"></script>	
    <script>
      (function() {
+
+        //Create new game using Phaser
         var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game');
+
+        //Add all game states
         game.state.add("Boot",boot);
         game.state.add("Preload",preload);
         game.state.add("Menu",menu);
         game.state.add("TowerScum",towerScum);
         game.state.add("GameOver",gameOver);
+
+        //Boot the game with first state: Boot
         game.state.start("Boot");
       })();    
     </script>
