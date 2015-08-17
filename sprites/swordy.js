@@ -4,21 +4,21 @@ var swordy = function(that, x, y, number){ //x and y coordinates for positioning
   y = x || 0;
 
   console.log('spawning swordy');
-
+//walk animation
   var walkPNGs = ['swordy/walk/01.png',
                   'swordy/walk/02.png',
                   'swordy/walk/03.png',
                   'swordy/walk/04.png',
                   'swordy/walk/05.png',
                   'swordy/walk/06.png'];
-
+//death animation
   var diePNGs = ['swordy/die/01.png',
                  'swordy/die/02.png',
                  'swordy/die/03.png',
                  'swordy/die/04.png',
                  'swordy/die/05.png',
                  'swordy/die/06.png'];
-
+//attack animation
   var attackPNGs = [
                     'swordy/attack/01.png',
                     'swordy/attack/02.png',
@@ -32,19 +32,20 @@ var swordy = function(that, x, y, number){ //x and y coordinates for positioning
                     'swordy/attack/10.png'];
 
   var addMovement = function(virus){
-
+// when dragging viruses speed up their walk but there is no actual movement
   	var startDrag = function(virus){
 	    virus.animations.play('airwalk');
 	    virus.body.moves = false;
 	    console.log('startDrag on swordy');
     }
 
+//once the player does the stop drag
   var stopDrag = function(virus){
         virus.body.moves = true;
         virus.animations.play('walk');
         virus.body.velocity.x = 100
   
-        if (virus.y < 200){ // top of map = -10 or something bottom is like 590?
+        if (virus.y < 200){ // top of map = -10 or something bottom is like 590 but if the player holds the virus lower than 200 the virus will die
           virus.animations.stop('walk');
           setTimeout(function(){
             virus.animations.play('die');
@@ -88,11 +89,11 @@ var swordy = function(that, x, y, number){ //x and y coordinates for positioning
   swordyViruses = that.game.add.group();
   swordyViruses.enableBody = true;
   swordyViruses.physicsBodyType = Phaser.Physics.ARCADE;
-  for(var i = 0; i < number; i++){
+  for(var i = 0; i < number; i++){//the amount of virus that will be spawned
   	setTimeout(function(){
-  		var swordy = swordyViruses.create(0+x, 430+y, 'viruses', "swordy/walk/01.png");
+  		var swordy = swordyViruses.create(0+x, 430+y, 'viruses', "swordy/walk/01.png"); // the spawn coordinates for the virus
   		addMovement(swordy);
-  	}, (i*1000)+500)
+  	}, (i*1000)+500) // the time between each spawn
   	
   }
 
