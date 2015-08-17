@@ -9,6 +9,7 @@ var redViruses = {};
 var blueViruses = {};
 var yellowViruses = {};
 var swordyViruses = {};
+var goldswordyViruses = {};
 
 var roundText;
 var roundString;
@@ -30,95 +31,96 @@ towerScum.prototype = {
     return result;
   },
   endRound: function(){
-  	if(redViruses.hasOwnProperty('children')){
-  		var totalLeft = blueViruses.children.length + redViruses.children.length;
-  	}else{
+    if(redViruses.hasOwnProperty('children')){
+      var totalLeft = blueViruses.children.length + redViruses.children.length;
+    }else{
 
-  		var totalLeft = blueViruses.children.length;
-  		// console.log('total left: ', totalLeft)
-  	}
-  	
-  	if(!totalLeft ){
-  		console.log('round ended')
-  		tween = this.game.add.tween(popup.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
-  		popup.alpha = 1;
-  		
-  	}
-  },
+      var totalLeft = blueViruses.children.length;
+      // console.log('total left: ', totalLeft)
+    }
+
+    if(!totalLeft ){
+      console.log('round ended')
+      tween = this.game.add.tween(popup.scale).to( { x: 1, y: 1 }, 1000, Phaser.Easing.Elastic.Out, true);
+      popup.alpha = 1;
+
+    }
+   },
   nextRound: function(){
-  	this.roundStarted = false;
+    this.roundStarted = false;
 
-	roundNumber++;
-	this.rounds[roundNumber](this);
-	popup.alpha = 0;
-	tween = this.game.add.tween(popup.scale).to( { x: .1, y: .1 }, 1000, Phaser.Easing.Elastic.Out, true);
+  roundNumber++;
+  this.rounds[roundNumber](this);
+  popup.alpha = 0;
+  tween = this.game.add.tween(popup.scale).to( { x: .1, y: .1 }, 1000, Phaser.Easing.Elastic.Out, true);
   },
    rounds : {
-	1: function(context){
-		swordy(context, 0, 0, 5)
-	    blueVirus(context, 0, 0, 5)
-		},
-	2: function(context){
-	    blueVirus(context, 0, 0, 7)
-		},
-	3: function(context){
-	    blueVirus(context, 0, 0, 10)
-	    redVirus(context, 0, 0, 1)
-		},
-	4: function(context){
-	    blueVirus(context, 0, 0, 15)
-	    redVirus(context, 0, 0, 3)
+  1: function(context){
+  	  goldSwordy(context, 0, 0, 2)
+      swordy(context, 0, 0, 5)
+      blueVirus(context, 0, 0, 5)
+    },
+  2: function(context){
+      blueVirus(context, 0, 0, 7)
+  },
+  3: function(context){
+      blueVirus(context, 0, 0, 10)
+      redVirus(context, 0, 0, 1)
+  },
+  4: function(context){
+      blueVirus(context, 0, 0, 15)
+      redVirus(context, 0, 0, 3)
       yellowVirus(context, 0, 0, 1);
-		},
-	5: function(context){
-	    blueVirus(context, 0, 0, 15)
-	    redVirus(context, 0, 0, 5)
-		},
-	6: function(context){
-	    blueVirus(context, 0, 0, 20)
-	    redVirus(context, 0, 0, 5)
-		},
-	7: function(context){
-	    blueVirus(context, 0, 0, 25)
-	    redVirus(context, 0, 0, 5)
-		},
-	8: function(context){
-	    blueVirus(context, 0, 0, 25)
-	    redVirus(context, 0, 0, 10)
-		},
-	9: function(context){
-	    blueVirus(context, 0, 0, 30)
-	    redVirus(context, 0, 0, 10)
-		},
-	10: function(context){
-	    blueVirus(context, 0, 0, 35)
-	    redVirus(context, 0, 0, 15)
-		},
-	11: function(context){
-	    blueVirus(context, 0, 0, 40)
-	    redVirus(context, 0, 0, 20)
-		},
-	12: function(context){
-	    blueVirus(context, 0, 0, 45)
-	    redVirus(context, 0, 0, 20)
-		},
-	13: function(context){
-	    blueVirus(context, 0, 0, 50)
-	    redVirus(context, 0, 0, 25)
-		},
-	context: function(context){
-		console.log(context);
-	}
+    },
+  5: function(context){
+      blueVirus(context, 0, 0, 15)
+      redVirus(context, 0, 0, 5)
+    },
+  6: function(context){
+      blueVirus(context, 0, 0, 20)
+      redVirus(context, 0, 0, 5)
+    },
+  7: function(context){
+      blueVirus(context, 0, 0, 25)
+      redVirus(context, 0, 0, 5)
+    },
+  8: function(context){
+      blueVirus(context, 0, 0, 25)
+      redVirus(context, 0, 0, 10)
+    },
+  9: function(context){
+      blueVirus(context, 0, 0, 30)
+      redVirus(context, 0, 0, 10)
+    },
+  10: function(context){
+      blueVirus(context, 0, 0, 35)
+      redVirus(context, 0, 0, 15)
+    },
+  11: function(context){
+      blueVirus(context, 0, 0, 40)
+      redVirus(context, 0, 0, 20)
+    },
+  12: function(context){
+      blueVirus(context, 0, 0, 45)
+      redVirus(context, 0, 0, 20)
+    },
+  13: function(context){
+      blueVirus(context, 0, 0, 50)
+      redVirus(context, 0, 0, 25)
+    },
+  context: function(context){
+    console.log(context);
+  }
 
 
 },
-	round: 1,
+  round: 1,
 
 
   create: function() {
-  	console.log('Creating game...');
+    console.log('Creating game...');
 
-  	createStage(this);
+    createStage(this);
 
     compSprite(this); //takes x and y coordinates for positioning
     weapon(this);
@@ -182,11 +184,11 @@ towerScum.prototype = {
 
   update: function() {
 
-  	this.game.physics.arcade.collide(blueViruses, ground, null, null, null);
-  	this.game.physics.arcade.collide(blueViruses, collisionLine, attack, null, null);
-  	
-  	this.game.physics.arcade.collide(redViruses, ground, null, null, null);
-  	this.game.physics.arcade.collide(redViruses, collisionLine, attack, null, null);
+    this.game.physics.arcade.collide(blueViruses, ground, null, null, null);
+    this.game.physics.arcade.collide(blueViruses, collisionLine, attack, null, null);
+
+    this.game.physics.arcade.collide(redViruses, ground, null, null, null);
+    this.game.physics.arcade.collide(redViruses, collisionLine, attack, null, null);
 
     this.game.physics.arcade.collide(yellowViruses, ground, null, null, null);
     this.game.physics.arcade.collide(yellowViruses, collisionLine, attack, null, null);
@@ -194,8 +196,11 @@ towerScum.prototype = {
     this.game.physics.arcade.collide(swordyViruses, ground, null, null, null);
     this.game.physics.arcade.collide(swordyViruses, collisionLine, attack, null, null);
 
+    this.game.physics.arcade.collide(goldswordyViruses, ground, null, null, null);
+    this.game.physics.arcade.collide(goldswordyViruses, collisionLine, attack, null, null);
 
-  	this.bar.context.clearRect(0, 0, this.bar.width, this.bar.height);
+
+    this.bar.context.clearRect(0, 0, this.bar.width, this.bar.height);
      
      //color changes based on 50% health and 25% health
     if (this.barProgress < 32) {
@@ -216,30 +221,30 @@ towerScum.prototype = {
     this.bar.dirty = true; //apparently this line is important but I dont know why
 
     if(blueViruses.children.length){
-  		this.roundStarted = true;
-  	}
+      this.roundStarted = true;
+    }
 
-  	// console.log(this.barProgress);
+    // console.log(this.barProgress);
 
-  	if(this.roundStarted){
-  		this.endRound();
-  	}
+    if(this.roundStarted){
+      this.endRound();
+    }
 
-  	if(this.barProgress <= 0){
-  		console.log("You have lost!");
-  		var brokenComp = this.game.add.sprite(560, 310, 'brokenComp');
-  		brokenComp.width = ratio(165);
-  		brokenComp.height = ratio(142);
-  		mainComp.kill();
-  		controlPanel.kill();
-  		this.game.state.start("GameOver",true,false,score);	
+    if(this.barProgress <= 0){
+      console.log("You have lost!");
+      var brokenComp = this.game.add.sprite(560, 310, 'brokenComp');
+      brokenComp.width = ratio(165);
+      brokenComp.height = ratio(142);
+      mainComp.kill();
+      controlPanel.kill();
+      this.game.state.start("GameOver",true,false,score);	
       this.roundStarted = false;
-  	}
+    }
 
   },
 
   render: function(){
-  	this.game.debug.text(this.game.time.fps || '--', 2, 14, "#00ff00");//shows fps on top left
+    this.game.debug.text(this.game.time.fps || '--', 2, 14, "#00ff00");//shows fps on top left
   }
 };
 

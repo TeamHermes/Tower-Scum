@@ -19,6 +19,7 @@ preload.prototype = {
     this.game.load.script('redvirus.js', 'sprites/redvirus.js');
     this.game.load.script('yellowvirus.js', 'sprites/yellowvirus.js');
     this.game.load.script('swordy.js', 'sprites/swordy.js');
+    this.game.load.script('goldswordy.js', 'sprites/goldswordy.js');
     this.game.load.script('computerCollision.js','sprites/computerCollision.js');
     this.game.load.script('createStage', 'sprites/createStage.js');
     this.game.load.image("background", "assets/bg.png");
