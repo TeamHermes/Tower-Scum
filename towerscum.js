@@ -121,6 +121,7 @@ towerScum.prototype = {
   	createStage(this);
 
     compSprite(this); //takes x and y coordinates for positioning
+    weapon(this);
     computerCollision(this);
 
     //blueVirus(this, 0, 0, 5)
@@ -132,7 +133,7 @@ towerScum.prototype = {
     //health bar
     this.outerbar = this.add.bitmapData(134, 13);
     this.outerbar.context.fillStyle = '#00685e';
-    this.outerbar.fill()
+    this.outerbar.fill();
     this.barProgress = 128;      
     this.bar = this.add.bitmapData(128, 10); //sets width and height for bar
     this.game.add.sprite(633, 298, this.outerbar); //outerbar
