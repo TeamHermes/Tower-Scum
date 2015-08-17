@@ -20,17 +20,16 @@ var swordy = function(that, x, y, number){ //x and y coordinates for positioning
                  'swordy/die/06.png'];
 
   var attackPNGs = [
+                    'swordy/attack/01.png',
+                    'swordy/attack/02.png',
+                    'swordy/attack/03.png',
+                    'swordy/attack/04.png',
+                    'swordy/attack/05.png',
                     'swordy/attack/06.png',
                     'swordy/attack/07.png',
                     'swordy/attack/08.png',
                     'swordy/attack/09.png',
                     'swordy/attack/10.png'];
-  var waitPNGs = [
-                    'swordy/attack/01.png',
-                    'swordy/attack/02.png',
-                    'swordy/attack/03.png',
-                    'swordy/attack/04.png',
-                    'swordy/attack/05.png'];
 
   var addMovement = function(virus){
 
@@ -74,7 +73,6 @@ var swordy = function(that, x, y, number){ //x and y coordinates for positioning
 
     virus.animations.add('walk', walkPNGs, 15, true);
     virus.animations.add('attack', attackPNGs, 10, true);
-    // virus.animations.add('wait', waitPNGs, 10, true);
     virus.animations.add('die', diePNGs, 13, true);
     virus.animations.add('airwalk', walkPNGs, 45, true);
     virus.animations.play('walk');
@@ -92,7 +90,7 @@ var swordy = function(that, x, y, number){ //x and y coordinates for positioning
   swordyViruses.physicsBodyType = Phaser.Physics.ARCADE;
   for(var i = 0; i < number; i++){
   	setTimeout(function(){
-  		var swordy = swordyViruses.create(0+x, 440+y, 'viruses', "swordy/walk/01.png");
+  		var swordy = swordyViruses.create(0+x, 430+y, 'viruses', "swordy/walk/01.png");
   		addMovement(swordy);
   	}, (i*1000)+500)
   	

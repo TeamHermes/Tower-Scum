@@ -19,19 +19,9 @@ var roundNumber = 1;
 
 var popup;
 var attack = function(virus){
-	if(swordy){
- 	  console.log('testg');
- 	  virus.animations.play('wait');
-    virus.animations.play('attack');
-    health -= .25;
-    virus.y = virus.y - 25;		
-	}
-  else{
- 	  console.log('attacking');
     virus.animations.play('attack');
     health -= .25;
     virus.y = virus.y - 25;
-  }
 }
 
 towerScum.prototype = {

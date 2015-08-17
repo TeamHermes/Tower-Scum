@@ -257,6 +257,46 @@
 	"sourceSize": {"w":22,"h":22}
 },
 {
+	"filename": "swordy/attack/01.png",
+	"frame": {"x":141,"y":2,"w":31,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":9,"w":31,"h":81},
+	"sourceSize": {"w":36,"h":99}
+},
+{
+	"filename": "swordy/attack/02.png",
+	"frame": {"x":106,"y":2,"w":33,"h":82},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":8,"w":33,"h":82},
+	"sourceSize": {"w":36,"h":99}
+},
+{
+	"filename": "swordy/attack/03.png",
+	"frame": {"x":72,"y":2,"w":32,"h":85},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":32,"h":85},
+	"sourceSize": {"w":36,"h":99}
+},
+{
+	"filename": "swordy/attack/04.png",
+	"frame": {"x":37,"y":2,"w":33,"h":86},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":5,"w":33,"h":86},
+	"sourceSize": {"w":36,"h":99}
+},
+{
+	"filename": "swordy/attack/05.png",
+	"frame": {"x":2,"y":2,"w":33,"h":90},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":33,"h":90},
+	"sourceSize": {"w":36,"h":99}
+},
+{
 	"filename": "swordy/attack/06.png",
 	"frame": {"x":419,"y":59,"w":36,"h":55},
 	"rotated": false,
@@ -343,46 +383,6 @@
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":11,"w":48,"h":43},
 	"sourceSize": {"w":64,"h":67}
-},
-{
-	"filename": "swordy/wait/01.png",
-	"frame": {"x":141,"y":2,"w":31,"h":81},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":9,"w":31,"h":81},
-	"sourceSize": {"w":36,"h":99}
-},
-{
-	"filename": "swordy/wait/02.png",
-	"frame": {"x":106,"y":2,"w":33,"h":82},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":8,"w":33,"h":82},
-	"sourceSize": {"w":36,"h":99}
-},
-{
-	"filename": "swordy/wait/03.png",
-	"frame": {"x":72,"y":2,"w":32,"h":85},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":4,"y":6,"w":32,"h":85},
-	"sourceSize": {"w":36,"h":99}
-},
-{
-	"filename": "swordy/wait/04.png",
-	"frame": {"x":37,"y":2,"w":33,"h":86},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":5,"w":33,"h":86},
-	"sourceSize": {"w":36,"h":99}
-},
-{
-	"filename": "swordy/wait/05.png",
-	"frame": {"x":2,"y":2,"w":33,"h":90},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":2,"y":1,"w":33,"h":90},
-	"sourceSize": {"w":36,"h":99}
 },
 {
 	"filename": "swordy/walk/01.png",
@@ -567,6 +567,6 @@
 	"format": "RGBA8888",
 	"size": {"w":838,"h":128},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:16cba9eb4fc79f732f8df70aca3f36af:9b75b5d18a7ec88c9823176481042042:2ec98947f89e8a161d684d54726efc6e$"
+	"smartupdate": "$TexturePacker:SmartUpdate:865e556fe04cfc2bda2361478aca3339:8520e23351fb49b201a25e681b35f5ef:2ec98947f89e8a161d684d54726efc6e$"
 }
 }
