@@ -27,20 +27,17 @@ var roundNumber = 1;
 //PopUp Box
 var popup;
 
-//Attack function
-var attack = function(virus){
-    virus.animations.play('attack');
-    health -= .25;
-    virus.y = virus.y - 25;
-};
+
 
 //Game object
 towerScum.prototype = {
+  //Attack function
   attack: function(virus){
     virus.animations.play('attack');
     health -= .25;
     virus.y = virus.y - 25;
     var context = this;
+    sparkSound.play();
   },
   //Ratio to increase sprite size by 50%
   ratio: function(number){
@@ -147,6 +144,7 @@ towerScum.prototype = {
     music.play();
 
     //create sparks sound effects
+    powerDownSound = this.game.add.audio('powerDown');
     sparkSound = this.game.add.audio('powerDown');
     
     createStage(this); //Loads stage
@@ -273,7 +271,7 @@ towerScum.prototype = {
       mainComp.kill();
       controlPanel.kill();
       this.roundStarted = false;
-      sparkSound.play();
+      powerDownSound.play();
       var that = this;
       setTimeout(function(){
         that.game.state.start("GameOver",true,false,score);

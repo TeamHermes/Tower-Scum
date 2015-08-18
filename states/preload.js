@@ -43,6 +43,8 @@ preload.prototype = {
     //load sound
     this.game.load.audio('bg', ['fx/bg.mp3']);
     this.game.load.audio('powerDown', ['fx/power_down.mp3']);
+    this.game.load.audio('sparks', ['fx/spark.mp3']);
+
 
   },
     create: function(){
