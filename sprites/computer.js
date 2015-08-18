@@ -140,6 +140,7 @@ var weapon = function(that, x, y){
 
 var missileHit = function(virus, missile){
   missile.body.gravity.y=-200;
+  explodeSound.play();
   virus.kill();
   missile.play('explode');
   missile.body.velocity.x=0;

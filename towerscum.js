@@ -149,6 +149,7 @@ towerScum.prototype = {
     powerDownSound = this.game.add.audio('powerDown');
     sparkSound = this.game.add.audio('sparks');
     dieSound = this.game.add.audio('die');
+    explodeSound = this.game.add.audio('explode');
     
     createStage(this); //Loads stage
 
