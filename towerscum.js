@@ -36,6 +36,12 @@ var attack = function(virus){
 
 //Game object
 towerScum.prototype = {
+  attack: function(virus){
+    virus.animations.play('attack');
+    health -= .25;
+    virus.y = virus.y - 25;
+    var context = this;
+  },
   //Ratio to increase sprite size by 50%
   ratio: function(number){
     var result = number + (number * 0.5 );
@@ -137,7 +143,11 @@ towerScum.prototype = {
 
     //create music
     music = this.game.add.audio('bg');
+    music.loop = true;
     music.play();
+
+    //create sparks sound effects
+    sparkSound = this.game.add.audio('powerDown');
     
     createStage(this); //Loads stage
 
@@ -207,19 +217,19 @@ towerScum.prototype = {
 
     //Checks for collision with ground and computer. Computer collision executes attack function
     this.game.physics.arcade.collide(blueViruses, ground, null, null, null);
-    this.game.physics.arcade.collide(blueViruses, collisionLine, attack, null, null);
+    this.game.physics.arcade.collide(blueViruses, collisionLine, this.attack, null, null);
 
     this.game.physics.arcade.collide(redViruses, ground, null, null, null);
-    this.game.physics.arcade.collide(redViruses, collisionLine, attack, null, null);
+    this.game.physics.arcade.collide(redViruses, collisionLine, this.attack, null, null);
 
     this.game.physics.arcade.collide(yellowViruses, ground, null, null, null);
-    this.game.physics.arcade.collide(yellowViruses, collisionLine, attack, null, null);
+    this.game.physics.arcade.collide(yellowViruses, collisionLine, this.attack, null, null);
 
     this.game.physics.arcade.collide(swordyViruses, ground, null, null, null);
-    this.game.physics.arcade.collide(swordyViruses, collisionLine, attack, null, null);
+    this.game.physics.arcade.collide(swordyViruses, collisionLine, this.attack, null, null);
 
     this.game.physics.arcade.collide(goldswordyViruses, ground, null, null, null);
-    this.game.physics.arcade.collide(goldswordyViruses, collisionLine, attack, null, null);
+    this.game.physics.arcade.collide(goldswordyViruses, collisionLine, this.attack, null, null);
 
 
     this.bar.context.clearRect(0, 0, this.bar.width, this.bar.height);
@@ -262,8 +272,12 @@ towerScum.prototype = {
       brokenComp.height = ratio(142);
       mainComp.kill();
       controlPanel.kill();
-      this.game.state.start("GameOver",true,false,score);	
       this.roundStarted = false;
+      sparkSound.play();
+      var that = this;
+      setTimeout(function(){
+        that.game.state.start("GameOver",true,false,score);
+        }, 1000); 
     }
 
   },

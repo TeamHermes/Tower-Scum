@@ -37,9 +37,11 @@ preload.prototype = {
     this.game.load.script('goldswordy.js', 'sprites/goldswordy.js');
     this.game.load.script('computerCollision.js','sprites/computerCollision.js');
     this.game.load.script('createStage', 'sprites/createStage.js');
+    this.game.load.script('makeSparks','sprites/sparks.js');
 
     //load sound
     this.game.load.audio('bg', ['fx/bg.mp3']);
+    this.game.load.audio('powerDown', ['fx/power_down.mp3']);
 
   },
     create: function(){
