@@ -94,7 +94,7 @@ var goldSwordy = function(that, x, y, number){ //x and y coordinates for positio
   goldswordyViruses.physicsBodyType = Phaser.Physics.ARCADE;
   for(var i = 0; i < number; i++){
     setTimeout(function(){
-      var goldSwordy = goldswordyViruses.create(0+x, 430+y, 'viruses', "goldswordy/walk/01.png");
+      var goldSwordy = goldswordyViruses.create(0+x, 480+y, 'viruses', "goldswordy/walk/01.png");
       addMovement(goldSwordy);
     }, (i*1000)+800)
 

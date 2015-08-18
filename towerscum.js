@@ -206,6 +206,20 @@ towerScum.prototype = {
     popup.addChild(okayButton);
 
     popup.scale.set(0.1);
+
+    //invisible platform for illusion of depth
+    platform = this.game.add.group();
+
+    //  We will enable physics for any object that is created in this group
+    // Here we create the ground.
+    var invisible = platform.create(0, this.game.world.height-60, 'invisible');
+    this.game.physics.enable(invisible, Phaser.Physics.ARCADE);
+
+    //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
+    invisible.scale.x = this.game.world.width;
+    invisible.body.immovable = true;
+    invisible.renderable = false;
+   //  This stops it from falling away when you jump on it
   },
 
 
@@ -217,18 +231,23 @@ towerScum.prototype = {
     //Checks for collision with ground and computer. Computer collision executes attack function
     this.game.physics.arcade.collide(blueViruses, ground, null, null, null);
     this.game.physics.arcade.collide(blueViruses, collisionLine, this.attack, null, null);
+    this.game.physics.arcade.collide(blueViruses, platform);
 
     this.game.physics.arcade.collide(redViruses, ground, null, null, null);
     this.game.physics.arcade.collide(redViruses, collisionLine, this.attack, null, null);
+    this.game.physics.arcade.collide(redViruses, platform);
 
     this.game.physics.arcade.collide(yellowViruses, ground, null, null, null);
     this.game.physics.arcade.collide(yellowViruses, collisionLine, this.attack, null, null);
+    this.game.physics.arcade.collide(yellowViruses, platform);
 
     this.game.physics.arcade.collide(swordyViruses, ground, null, null, null);
     this.game.physics.arcade.collide(swordyViruses, collisionLine, this.attack, null, null);
+    this.game.physics.arcade.collide(swordyViruses, platform);
 
     this.game.physics.arcade.collide(goldswordyViruses, ground, null, null, null);
     this.game.physics.arcade.collide(goldswordyViruses, collisionLine, this.attack, null, null);
+    this.game.physics.arcade.collide(goldswordyViruses, platform);
 
 
     this.bar.context.clearRect(0, 0, this.bar.width, this.bar.height);
