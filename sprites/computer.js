@@ -20,15 +20,30 @@ var doorsPNGs = [
 'doors/_12.png',
 'doors/_13.png',
 'doors/_14.png',
-'doors/_15.png',
-'doors/_16.png',
-'missile/_04.png'
+'doors/_15.png'
+];
+
+var platePNGs = [
+'plate/_01.png',
+'plate/_02.png',
+'plate/_03.png',
+'plate/_04.png',
+'plate/_05.png',
+'plate/_06.png',
+'plate/_07.png'
+];
+
+var explosionPNGs = [
+'missile/_34.png',
+'missile/_35.png'
 ];
 
 var wheels;
 var mainComp;
 var controlPanel;
 var weaponPanel;
+var missiles = [];
+var explosions = [];
 
 var compSprite = function(that, x, y){ //x and y coordinates for positioning
 
@@ -60,8 +75,6 @@ var compSprite = function(that, x, y){ //x and y coordinates for positioning
 };
 
 
-
-
 var weapon = function(that, x, y){
   x = x || 0;
   y = y || 0;
@@ -69,11 +82,51 @@ var weapon = function(that, x, y){
   var fireWeapon = that.game.add.button(400,400,"button", fireMissiles, that);
   fireWeapon.anchor.setTo(0.5,0.5);
 
-  weaponPanel = that.game.add.sprite(500+x, 300+y, 'missiles', 'doors/_02.png');
+  weaponPanel = that.game.add.sprite(580+x, 335+y, 'missiles', 'doors/_02.png');
   weaponPanel.animations.add('weaponFire', doorsPNGs, 15, true);
+  weaponPanel.width = ratio(90); //stretches image by width
+  weaponPanel.height = ratio(55); //stretches image by height
+  weaponPanel.visible = false; //make panel invisible
+
+  plate = that.game.add.sprite(630+x, 350+y, 'missiles', 'plate/_01.png');
+  plate.animations.add('plate', platePNGs, 15, true);
+  plate.width = ratio(40); //stretches image by width
+  plate.height = ratio(45); //stretches image by height
+  plate.visible = false;
+
+  for(var i = 0; i < 6; i++){
+    missiles.push(that.game.add.sprite(620+ Math.random() * 50, 330+ Math.random() * 50, 'missiles', 'missile/_07.png'));
+    that.game.physics.arcade.enable(missiles[i]);
+    that.game.physics.arcade.collide(missiles[i], that.ground, null, null, null);
+    missiles[i].enableBody = true;
+    missiles[i].physicsBodyType = Phaser.Physics.ARCADE;
+    missiles[i].visible = false;
+
+    explosions.push(that.game.add.sprite(620+ Math.random() * 50, 330+ Math.random() * 50, 'missiles', 'missile/_34.png'));
+    explosions[i].animations.add('launch', explosionPNGs, 15, true);
+    explosions[i].visible = false;
+  }
+
 };
 
 var fireMissiles = function(){
+  weaponPanel.visible = true; //make panel visible
   weaponPanel.animations.play('weaponFire', 10, false, true);
+
+  weaponPanel.events.onAnimationComplete.add(function(){ //trigger another animation
+    plate.visible = true;
+    plate.animations.play('plate', 10, false, true);
+    for(var i = 0; i < 6; i++){
+        explosions[i].animations.play('launch', 10, false, true);
+        console.log(missiles[i]);
+        missiles[i].visible = true;
+        missiles[i].body.gravity.y = 50;
+        missiles[i].body.velocity.x = -200;
+    
+      }
+  });
+
+  mainComp.animations.stop();
+  controlPanel.animations.stop();
   
 };
