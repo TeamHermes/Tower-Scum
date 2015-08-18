@@ -27,7 +27,8 @@ preload.prototype = {
     this.game.load.image("popup", "assets/popup.png");
     this.game.load.image("okay", "assets/okay.png");
     this.game.load.image("fire", "assets/fire.png");
-
+    this.game.load.image("invisible", "assets/invisible.png")
+    
     //load scripts
     this.game.load.script('loadSprites.js', 'sprites/loadSprites.js');
     this.game.load.script('computer.js', 'sprites/computer.js');
