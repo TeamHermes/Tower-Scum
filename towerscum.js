@@ -16,6 +16,8 @@ var blueViruses = {};
 var yellowViruses = {};
 var swordyViruses = {};
 var goldswordyViruses = {};
+var missiles = {};
+var explosions = {};
 
 //Round
 var roundText;
@@ -217,18 +219,23 @@ towerScum.prototype = {
     //Checks for collision with ground and computer. Computer collision executes attack function
     this.game.physics.arcade.collide(blueViruses, ground, null, null, null);
     this.game.physics.arcade.collide(blueViruses, collisionLine, this.attack, null, null);
+    this.game.physics.arcade.collide(blueViruses, missiles, missileHit, null, null);
 
     this.game.physics.arcade.collide(redViruses, ground, null, null, null);
     this.game.physics.arcade.collide(redViruses, collisionLine, this.attack, null, null);
+    this.game.physics.arcade.collide(redViruses, missiles, missileHit, null, null);
 
     this.game.physics.arcade.collide(yellowViruses, ground, null, null, null);
     this.game.physics.arcade.collide(yellowViruses, collisionLine, this.attack, null, null);
+    this.game.physics.arcade.collide(yellowViruses, missiles, missileHit, null, null);
 
     this.game.physics.arcade.collide(swordyViruses, ground, null, null, null);
     this.game.physics.arcade.collide(swordyViruses, collisionLine, this.attack, null, null);
+    this.game.physics.arcade.collide(swordyViruses, missiles, missileHit, null, null);
 
     this.game.physics.arcade.collide(goldswordyViruses, ground, null, null, null);
     this.game.physics.arcade.collide(goldswordyViruses, collisionLine, this.attack, null, null);
+    this.game.physics.arcade.collide(goldswordyViruses, missiles, missileHit, null, null);
 
 
     this.bar.context.clearRect(0, 0, this.bar.width, this.bar.height);
