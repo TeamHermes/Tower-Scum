@@ -52,7 +52,7 @@ var swordy = function(that, x, y, number){ //x and y coordinates for positioning
           }, 2000);
           setTimeout(function(){
             virus.kill();
-
+            dieSound.play();
             score += 20;
             scoreText.text = scoreString + score; //score displayed
             

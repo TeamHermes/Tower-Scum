@@ -33,7 +33,7 @@ var yellowVirus = function(that, x, y, number){ //x and y coordinates for positi
 	    virus.body.moves = false;
 	    tween.pause();
 	    console.log('startDrag on redVirus');
-    }
+    };
 
   var stopDrag = function(virus){
         virus.body.moves = true;
@@ -51,7 +51,7 @@ var yellowVirus = function(that, x, y, number){ //x and y coordinates for positi
           }, 2000);
           setTimeout(function(){
             virus.kill();
-
+            dieSound.play();
             score += 20;
             scoreText.text = scoreString + score; //score displayed
             
