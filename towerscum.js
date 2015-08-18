@@ -49,11 +49,15 @@ towerScum.prototype = {
   //Function to check if round has ended
   endRound: function(){
     //Checks how many monsters are left depending on what monsters are spawned
-    if(redViruses.hasOwnProperty('children')){
-      var totalLeft = blueViruses.children.length + redViruses.children.length;
+    var totalLeft;
+    if(goldswordyViruses.hasOwnProperty('children')){
+      totalLeft = goldswordyViruses.children.length + swordyViruses.children.length + blueViruses.children.length + redViruses.children.length;
+    }else if(swordyViruses.hasOwnProperty('children')){
+      totalLeft = swordyViruses.children.length + blueViruses.children.length + redViruses.children.length;
+    }else if(redViruses.hasOwnProperty('children')){
+      totalLeft = blueViruses.children.length + redViruses.children.length;
     }else{
-
-      var totalLeft = blueViruses.children.length;
+      totalLeft = blueViruses.children.length;
       // console.log('total left: ', totalLeft)
     }
     //If there are no more monsters left, make the popup appear
