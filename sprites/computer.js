@@ -64,6 +64,7 @@ var mainComp;
 var controlPanel;
 var weaponPanel;
 var explosions = [];
+var fireWeapon;
 
 var compSprite = function(that, x, y){ //x and y coordinates for positioning
 
@@ -99,7 +100,7 @@ var weapon = function(that, x, y){
   x = x || 0;
   y = y || 0;
 
-  var fireWeapon = that.game.add.button(700,100,"fire", fireMissiles, that);
+  fireWeapon = that.game.add.button(700,100,"fire", fireMissiles, that);
   fireWeapon.anchor.setTo(0.5,0.5);
   fireWeapon.width = 100;
   fireWeapon.height = 50;
@@ -107,6 +108,7 @@ var weapon = function(that, x, y){
 
 
   weaponPanel = that.game.add.sprite(580+x, 335+y, 'missiles', 'doors/_02.png');
+  weaponPanel.animations.add('ready', ['doors/_02.png'], 1, true);
   weaponPanel.animations.add('weaponFire', doorsPNGs, 15, true);
   weaponPanel.width = ratio(90); //stretches image by width
   weaponPanel.height = ratio(55); //stretches image by height
@@ -144,7 +146,10 @@ var missileHit = function(virus, missile){
   missile.body.gravity.y=-200;
   explodeSound.play();
   virus.kill();
-  virus.parent.removeChild(virus);
+  if(virus.parent !== undefined){
+    virus.parent.removeChild(virus);
+  }
+  
   missile.play('explode');
   missile.body.velocity.x=0;
   setTimeout(function(){
@@ -156,19 +161,27 @@ var missileHit = function(virus, missile){
 var fireMissiles = function(){
   weaponPanel.visible = true; //make panel visible
   weaponPanel.animations.play('weaponFire', 10, false, true);
+  fireWeapon.visible = false;
 
-  weaponPanel.events.onAnimationComplete.add(function(){ //trigger another animation
+  console.log('firing again');
+
+  setTimeout(function(){ //trigger another animation
     plate.visible = true;
     plate.animations.play('plate', 10, false, true);
     for(var i = 0; i < 6; i++){
         explosions.children[i].animations.play('launch', 10, false, true);
         console.log(missiles[i]);
+        explosions.children[i].visible = true;
         missiles.children[i].visible = true;
         missiles.children[i].body.gravity.y = 100;
         missiles.children[i].body.velocity.x = -200;
-        
+        console.log(missiles.children.length);
+
       }
-  });
+      weaponPanel.animations.stop(null, true);
+      weaponPanel.visible = false;
+      plate.visible = false;
+  }, 1000);
 
   mainComp.animations.stop();
   controlPanel.animations.stop();
@@ -177,4 +190,20 @@ var fireMissiles = function(){
     controlPanel.animations.play('blink');
   }, 1000);
 
+  setTimeout(function(){
+    missiles.children = [];
+    explosions.children = [];
+    for(var i = 0; i < 6; i++){
+      missile = missiles.create(620+ Math.random() * 50, 330+ Math.random() * 50, 'missiles', 'missile/_07.png');
+      missile.animations.add('explode', explode, 18, false);
+      missile.enableBody = true;
+      missile.physicsBodyType = Phaser.Physics.ARCADE;
+      missile.visible = false;
+
+      explosion = explosions.create(620+ Math.random() * 50, 330+ Math.random() * 50, 'missiles', 'missile/_34.png');
+      explosion.animations.add('launch', explosionPNGs, 15, true);
+      explosion.visible = false;
+      fireWeapon.visible = true;
+    }
+  }, 5000);
 };
