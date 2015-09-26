@@ -185,9 +185,6 @@ towerScum.prototype = {
     scoreText = this.game.add.text(10, 10, scoreString + score, { font: '28px Calibri', fill: '#fff' });
 
 
-    //Current Round:
-    currentRound = 'Round : ';
-    currentRoundText = this.game.add.text(660, 10, currentRound + roundNumber, { font: '28px Calibri', fill: '#fff' });
 
     //Round End Popup box
     popup = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'popup');
@@ -238,26 +235,31 @@ towerScum.prototype = {
 
     //Checks for collision with ground and computer. Computer collision executes attack function
     this.game.physics.arcade.collide(blueViruses, ground, null, null, null);
+    this.game.physics.arcade.collide(blueViruses, wall, null, null, null);
     this.game.physics.arcade.collide(blueViruses, collisionLine, this.attack, null, null);
     this.game.physics.arcade.collide(blueViruses, missiles, missileHit, null, null);
     this.game.physics.arcade.collide(blueViruses, platform);
 
     this.game.physics.arcade.collide(redViruses, ground, null, null, null);
+    this.game.physics.arcade.collide(redViruses, wall, null, null, null);
     this.game.physics.arcade.collide(redViruses, collisionLine, this.attack, null, null);
     this.game.physics.arcade.collide(redViruses, missiles, missileHit, null, null);
     this.game.physics.arcade.collide(redViruses, platform);
 
     this.game.physics.arcade.collide(yellowViruses, ground, null, null, null);
+    this.game.physics.arcade.collide(yellowViruses, wall, null, null, null);
     this.game.physics.arcade.collide(yellowViruses, collisionLine, this.attack, null, null);
     this.game.physics.arcade.collide(yellowViruses, missiles, missileHit, null, null);
     this.game.physics.arcade.collide(yellowViruses, platform);
 
     this.game.physics.arcade.collide(swordyViruses, ground, null, null, null);
+    this.game.physics.arcade.collide(swordyViruses, wall, null, null, null);
     this.game.physics.arcade.collide(swordyViruses, collisionLine, this.attack, null, null);
     this.game.physics.arcade.collide(swordyViruses, missiles, missileHit, null, null);
     this.game.physics.arcade.collide(swordyViruses, platform);
 
     this.game.physics.arcade.collide(goldswordyViruses, ground, null, null, null);
+    this.game.physics.arcade.collide(goldswordyViruses, wall, null, null, null);
     this.game.physics.arcade.collide(goldswordyViruses, collisionLine, this.attack, null, null);
     this.game.physics.arcade.collide(goldswordyViruses, missiles, missileHit, null, null);
     this.game.physics.arcade.collide(goldswordyViruses, platform);
